@@ -31,15 +31,44 @@ h2 {
     /* display: grid;
     grid-template-columns: repeat(12, [col-start] 1fr);
     gap: 20px; */
+
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    background-size: 1800% 1800%;
+
+    -webkit-animation: rainbow 18s ease infinite;
+    -z-animation: rainbow 18s ease infinite;
+    -o-animation: rainbow 18s ease infinite;
+      animation: rainbow 18s ease infinite;}
+
+    @-webkit-keyframes rainbow {
+        0%{background-position:0% 82%}
+        50%{background-position:100% 19%}
+        100%{background-position:0% 82%}
+    }
+    @-moz-keyframes rainbow {
+        0%{background-position:0% 82%}
+        50%{background-position:100% 19%}
+        100%{background-position:0% 82%}
+    }
+    @-o-keyframes rainbow {
+        0%{background-position:0% 82%}
+        50%{background-position:100% 19%}
+        100%{background-position:0% 82%}
+    }
+    @keyframes rainbow {
+        0%{background-position:0% 82%}
+        50%{background-position:100% 19%}
+        100%{background-position:0% 82%}
 }
 
 header {
-    padding: 1em 0em;
     grid-area: header;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 5px 5px 10px -10px rgba(144,78,191,0.75);
+    box-shadow: 0px 0.5px 1px 0.5px rgba(149, 0, 255, 0.75);
+    height: 100px;
+    background-color: white;
 }
 
 header > div {
@@ -53,8 +82,12 @@ header > div {
 #content {
     margin: auto;
     width: 900px;
-    /* height: 100vh; */
-    padding: 1em;
+    height: calc(100vh - 100px - 2em);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
 }
 
 
@@ -83,6 +116,11 @@ nav li a:hover {
     border: 1px solid #9d00ff;
 }
 
-.section {
-    /* display:none */
+.section { }
+
+
+.centered {
+    width: 100%;
+    ;font-size: 2em
+    ;color: #9d00ff
 }
