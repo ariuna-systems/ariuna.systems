@@ -10,13 +10,12 @@ body {
 h1 {display: none}
 
 h2 {
-    color: #904ebf;
-    display: none
+    color: #9d00ff;
 }
 
 #logo a {
     font-size: 2em;
-    color: #904ebf;
+    color: #9d00ff;
     border: none !important;
     text-decoration: none;
 }
@@ -75,11 +74,15 @@ nav li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    color: #904ebf;
+    color: #9d00ff;
     border: 1px solid white;
   }
 
 /* Change the link color to #111 (black) on hover */
 nav li a:hover {
-    border: 1px solid #904ebf;
+    border: 1px solid #9d00ff;
+}
+
+.section {
+    /* display:none */
 }

@@ -1,5 +1,9 @@
-<html>
-  <head>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>WaveletSpace</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-947QCV7NDM"></script>
     <script>
@@ -9,6 +13,70 @@
 
       gtag('config', 'G-947QCV7NDM');
     </script>
+
+<!-- <script defer>
+const useHash = true;
+// const apiUrl = 'https://lucasreta.com/stack-overflow/spa-vanilla-js/api';
+const routes = ['welcome', 'services', 'products'];
+
+
+pages = {
+  welcome: `
+    <div class="section" id="teaser">
+      We are experts in audio/visual signal processing, simulation and visualisation.
+    </div>
+  `,
+  services: `<div class="section" id="services"><h2>Services</h2></div>`,
+  products: `<div class="section" id="products"><h2>Products</h2></div>`
+  // <div class="section" id="members"><h2>Members</h2></div>
+  // <div class="section" id="contact"><h2>Contact</h2></div>
+
+}
+
+
+async function get(page) {
+  const content_box = document.getElementById("content");
+
+  // const response = await fetch("./templates/demo.html");
+  // const template = await response.text()
+  const template = pages[page]
+  content_box.innerHTML = template;
+  window.history.pushState(
+        { 'content': template, 'title': 'demo'},
+        title,
+        useHash ?
+          `#${page}` :
+          page
+      );
+}
+
+window.addEventListener("popstate", function(e) {
+  const state = e.state;
+  const content_box = document.getElementById("content");
+  content_box.innerHTML = state.content;
+});
+
+const links = document.getElementsByClassName('link');
+for(let i = 0; i < links.length; i++) {
+  links[i].addEventListener('click', function(event) {
+    event.preventDefault();
+    get(links[i].href.split('/').pop());
+  }, false);
+}
+
+(function(fn = function() {
+  const page = useHash ?
+    window.location.hash.split('#').pop() :
+  get(routes.indexOf(page) >= 0 ? page : routes[0]);
+}) {
+  if (document.readyState != 'loading'){
+    fn();
+  } else {
+    document.addEventListener('DOMContentLoaded', fn);
+  }
+})();
+</script>-->
+
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -19,30 +87,21 @@
           <div id="logo">
             <a href="www.waletet.space">WaveletSpace</a>
           </div>
-
           <nav id="main">
             <ul>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#products">Products</a></li>
-              <li><a href="#members">Members</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li class="link"><a href="#services">Services</a></li>
+              <li class="link"><a href="#products">Products</a></li>
+              <li class="link"><a href="#members">Members</a></li>
+              <li class="link"><a href="#contact">Contact</a></li>
             </ul>
           </nav>
         </div>
       </header>
       <div id="content">
-
-        <div id="teaser">
+        <div class="section" id="teaser">
           We are experts in audio/visual signal processing, simulation and visualisation.
         </div>
-
-        <h2 id="services">Services</h2>
-        <h2 id="products">Products</h2>
-        <h2 id="members">Members</h2>
-        <h2 id="contact">Contact</h2>
       </div>
-
-
     </div>
     </div>
   </body>
