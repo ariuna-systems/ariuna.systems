@@ -32,13 +32,22 @@ h2 {
     grid-template-columns: repeat(12, [col-start] 1fr);
     gap: 20px; */
 
-    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    background: linear-gradient(124deg,
+     #ff2400,
+     #e81d1d,
+     #e8b71d,
+     #e3e81d,
+     #1de840,
+     #1ddde8,
+     #2b1de8,
+     #dd00f3,
+     #dd00f3);
     background-size: 1800% 1800%;
 
-    -webkit-animation: rainbow 18s ease infinite;
-    -z-animation: rainbow 18s ease infinite;
-    -o-animation: rainbow 18s ease infinite;
-      animation: rainbow 18s ease infinite;}
+    -webkit-animation: rainbow 60s ease infinite;
+    -z-animation: rainbow 60s ease infinite;
+    -o-animation: rainbow 60s ease infinite;
+      animation: rainbow 60s ease infinite;}
 
     @-webkit-keyframes rainbow {
         0%{background-position:0% 82%}
@@ -67,8 +76,23 @@ header {
     align-items: center;
     justify-content: space-between;
     box-shadow: 0px 0.5px 1px 0.5px rgba(149, 0, 255, 0.75);
-    height: 100px;
+    height: 80px;
     background-color: white;
+}
+
+footer {
+    height: 80px;
+    display: flex;
+    grid-area: footer;
+    background-color: white;
+}
+
+footer > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 900px;
+    margin: auto;
 }
 
 header > div {
@@ -82,12 +106,10 @@ header > div {
 #content {
     margin: auto;
     width: 900px;
-    height: calc(100vh - 100px - 2em);
+    height: calc(100vh - 160px);
     display: flex;
     align-items: center;
     justify-content: center;
-
-
 }
 
 
