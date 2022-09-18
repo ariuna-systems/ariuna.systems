@@ -6,6 +6,12 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+:root {
+    --blue: rgb(0, 64, 255);
+    --white: #ffffff;
+    --dark: rgb(31, 31, 31);
+  }
+
 h1 {
     display: none
 }
@@ -27,17 +33,13 @@ h2 {
 #left-nav a {
     display: inline-block;
     text-decoration: none;
-    color: blue;
+    color: rgb(0, 64, 255);
     margin: 0;
     font-weight: normal;
     text-shadow: 1px 1px -1px #ddd;
 
 }
 
-#left-nav a#name {
-    padding: 24px;
-
-}
 
 #teaser {
     font-size: 2.2em;
@@ -62,10 +64,11 @@ a {
     color: rgb(255, 255, 255);
     font-weight: lighter;
     text-shadow: 1px 1px 2px rgb(0, 0, 255);
+    transition: color .9s ease-in-out;
 }
 
 #teaser p.main:hover {
-    color: blue
+    color: rgb(0, 64, 255)
 }
 
 
@@ -93,13 +96,27 @@ a {
 
 header {
     grid-area: header;
-    height: 64px;
     border-top: 1px solid #999999;
-    border-bottom: 1px solid #999999;
     background-color: white;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 992px 1fr;
+    grid-template-rows: auto;
     padding: 0 0px;
+    grid-template-areas:
+    "l-header c-header r-header";
+    height: 64px
+}
+
+#l-header {
+    border-bottom: 1px solid #999;
+    height: 64px;
+    box-sizing: border-box;
+}
+
+#r-header {
+    border-bottom: 1px solid#999;
+    height: 64px;
+    box-sizing: border-box;
 }
 
 footer {
@@ -129,14 +146,15 @@ main {
 }
 
 nav {
-    height: 64px;
     max-width: 992px;
     font-size: 1.2em;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* background-color:  #fffaaa; */
-    min-width: 992px
+    min-width: 992px;
+    height: 64px;
+    border-bottom: 1px solid #999;
+    box-sizing: border-box;
 }
 
 nav ul {
@@ -149,32 +167,44 @@ nav ul {
     height: 100%;
 }
 
+#left-nav {
+    /* border-bottom: 1px solid red; */
+    height: 64px;
+}
+
+#name {
+    /* text-transform: uppercase; */
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    width: 100%;
+    padding: 16px 16px
+}
+
+#name:hover {
+    box-shadow: inset 200px 0 0 0 rgb(0, 64, 255);
+    color: white;
+}
+
 nav ul li {
     margin: 0;
-    padding: 0
+    padding: 0 16px;
+
 }
 
 nav #logo img {
-    width: 48px;
     height: 48px;
 }
-
 
 nav li a {
     display: inline-block;
     text-decoration: none;
-    color: blue;
+    color: rgb(0, 64, 255);
     margin: 0;
-    padding: 24px;
-    height: 100%;
     font-weight: normal;
-    text-shadow: 1px 1px -1px #ddd;
-}
+    transition: color .3s ease-in-out;
+ }
 
 nav li a:hover {
-    color:blue;
-    background-color:#eee    /* border-left: 1px solid rgb(116, 116, 116); */
-    /* border-right: 1px solid rgb(116, 116, 116) */
+    color: #aaa;
 }
 
 #left-sidebar {
@@ -189,5 +219,9 @@ nav li a:hover {
 }
 
 .section{
-    padding: 16px;
+    padding: 0;
+}
+
+.no {
+    color: var(--dark)
 }
