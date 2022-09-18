@@ -64,15 +64,19 @@ a {
     text-shadow: 1px 1px 2px rgb(0, 0, 255);
 }
 
+#teaser p.main:hover {
+    color: blue
+}
+
 
 #container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 992px 1fr;
     grid-template-rows: auto;
     grid-template-areas:
-        "header header header header"
-        "left-sidebar main main right-sidebar"
-        "footer footer footer footer";
+        "header header header"
+        "left-sidebar main  right-sidebar"
+        "footer footer  footer";
     width: 100%;
     /* min-height: 100%; */
 
@@ -111,12 +115,12 @@ footer {
 
 footer .inner {
     height: 64px;
-    max-width: 1200px;
+    max-width: 992px;
     font-size: 1.0em;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    min-width: 1200px
+    min-width: 992px
 }
 
 main {
@@ -126,13 +130,13 @@ main {
 
 nav {
     height: 64px;
-    max-width: 1200px;
+    max-width: 992px;
     font-size: 1.2em;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     /* background-color:  #fffaaa; */
-    min-width: 1200px
+    min-width: 992px
 }
 
 nav ul {
