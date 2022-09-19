@@ -10,7 +10,7 @@ body {
     --blue: rgb(0, 64, 255);
     --white: #ffffff;
     --dark: rgb(31, 31, 31);
-  }
+}
 
 h1 {
     display: none
@@ -81,17 +81,13 @@ a {
         "left-sidebar main  right-sidebar"
         "footer footer  footer";
     width: 100%;
-    /* min-height: 100%; */
-
-
     animation: oscillate 1000 linear;
     animation-iteration-count: infinite;
     background: rgba(131, 58, 180, 0.541);
-    background: linear-gradient(
-        0deg,
-        rgb(255, 255, 255) 0%,
-        rgb(235, 235, 235) 100%
-    );
+    background: linear-gradient(0deg,
+            rgb(255, 255, 255) 0%,
+            rgb(235, 235, 235) 100%);
+
 }
 
 header {
@@ -103,7 +99,7 @@ header {
     grid-template-rows: auto;
     padding: 0 0px;
     grid-template-areas:
-    "l-header c-header r-header";
+        "l-header c-header r-header";
     height: 64px
 }
 
@@ -201,7 +197,7 @@ nav li a {
     margin: 0;
     font-weight: normal;
     transition: color .3s ease-in-out;
- }
+}
 
 nav li a:hover {
     color: #aaa;
@@ -210,15 +206,15 @@ nav li a:hover {
 #left-sidebar {
     grid-area: left-sidebar;
     background-color: transparent;
+    background:
 }
 
 #right-sidebar {
     grid-area: right-sidebar;
-    background-color:transparent;
-
+    background-color: transparent;
 }
 
-.section{
+.section {
     padding: 0;
 }
 
