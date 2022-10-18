@@ -51,7 +51,6 @@ h2 {
     font-size: 1.0em;
     color: rgb(122, 122, 122);
     font-weight: lighter;
-    /* text-shadow: 1px 1px 2px rgb(0, 0, 255); */
 }
 
 a {
@@ -65,6 +64,8 @@ a {
     font-weight: lighter;
     text-shadow: 1px 1px 2px rgb(0, 0, 255);
     transition: color .9s ease-in-out;
+    animation-name: teaser;
+    animation-duration: 16s;
 }
 
 #teaser p.main:hover {
@@ -219,4 +220,10 @@ nav li a:hover {
 
 .no {
     color: var(--dark)
+}
+
+@keyframes teaser {
+    0%   {color: white;}
+    50%  {color: rgb(0, 64, 255);}
+    100%  {color: white;}
 }
