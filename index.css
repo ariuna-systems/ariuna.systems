@@ -41,6 +41,10 @@ h1, h2, h3 {
     font-weight: normal;
 }
 
+.card:hover h3 {
+    color: white;
+}
+
 p {
     font-size: 1.2em;
     line-height: 1.3em;
@@ -74,7 +78,7 @@ p {
  */
 header {
     grid-area: header;
-    border-top: 1px solid #999999;
+    border-top: 1px solid #eee;
     background-color: white;
     display: grid;
     grid-template-columns: 1fr 992px 1fr;
@@ -86,15 +90,21 @@ header {
 }
 
 #l-header {
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid rgb(0, 0, 0);
     height: 64px;
     box-sizing: border-box;
 }
 
 #r-header {
-    border-bottom: 1px solid#999;
+    border-bottom: 1px solid rgb(0, 0, 0);
     height: 64px;
     box-sizing: border-box;
+    background-color:   rgb(0, 0, 0);
+}
+
+#r-header:hover {
+    background-color: white;
+    border-left: 1px solid black
 }
 
 nav {
@@ -105,7 +115,7 @@ nav {
     justify-content: space-between;
     min-width: 992px;
     height: 64px;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid rgb(0, 0, 0);
     box-sizing: border-box;
 }
 
@@ -141,14 +151,14 @@ nav ul {
 }
 
 #name {
-    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    /* transition: color .3s ease-in-out, box-shadow .3s ease-in-out; */
     width: 100%;
     padding: 16px 16px
 }
 
 #name:hover {
-    box-shadow: inset 200px 0 0 0 var(--purple);
-    color: white;
+    /* box-shadow: inset 200px 0 0 0 var(--purple); */
+    color: var(--blue);
 }
 
 nav ul li {
@@ -171,7 +181,7 @@ nav li a {
 }
 
 nav li a:hover {
-    color: var(--purple);
+    color: var(--blue);
 }
 
 /* ******************************************************************
@@ -181,7 +191,7 @@ nav li a:hover {
 footer {
     grid-area: footer;
     height: 64px;
-    border-bottom: 1px solid #999999;
+    /* border-bottom: 1px solid var(--purple); */
     background-color: white;
     display: flex;
     justify-content: center;
@@ -231,11 +241,18 @@ main {
     flex: 1;
     padding: 0.75em;
     margin: 0.25em;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid var(--purple);
+    color:black;
+    background: white;
     min-width: 150px;
     min-height: 150px;
 }
+
+
+.card:hover {
+    /* transform: scale(1.2); */
+    background-color: black;
+    color:white
+  }
 
 #members > div {
     display: flex;
@@ -261,37 +278,38 @@ main {
 }
 
 #left-sidebar > .aside {
-    min-height: 500px;
-    background-color: rgb(92, 0, 252);
+    min-height: 800px;
+    background-color: white;
+    border-bottom: 1px solid rgb(0, 0, 0);
 }
 
 
 #right-sidebar > .aside {
-    min-height: 500px;
-    background-color: rgb(92, 0, 252);
+    min-height: 800px;
+    background-color: rgb(255, 255, 255) ;
+    border-bottom: 1px solid rgb(0, 0, 0);
 }
 
 /* /sidebars */
 
 #teaser {
     font-size: 1.9em;
-    height: 500px;
+    height: 800px;
     margin: 0;
     padding: 0;
-    background-color: rgb(92, 0, 252);
-    background-image: url("./assets/pattern.png");
-    background-size: 22px 22px;
+    background: white;
+    border-bottom: 1px solid rgb(0, 0, 0);
 }
 
 #teaser p {
     font-size: 1.0em;
-    color:white;
+    color:rgb(108, 108, 108);
     font-weight: lighter;
 }
 
 a {
     color:var(--purple);
-    text-decoration: none;
+    text-decoration: none
 }
 
 
@@ -302,9 +320,8 @@ p.main {
 
 #teaser p.main {
     font-size: 2.2em;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-weight: lighter;
-    /* text-shadow: 1px 1px 2px var(--purple); */
     transition: color .9s ease-in-out;
     animation-name: teaser;
     animation-duration: 16s;
@@ -313,9 +330,9 @@ p.main {
 .no {
     color: var(--darkgrey)
 }
-
+/*
 @keyframes teaser {
     0%   {color: white;}
     50%  {color: #dbdcff}
     100%  {color: white;}
-}
+} */
