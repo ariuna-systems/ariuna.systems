@@ -221,33 +221,20 @@ main {
     margin-bottom: 18em;
     display: flex;
     flex-direction: row;
-    /* flex-wrap: wrap; */
-    /* background-color: #fffaaa; */
-    /* padding: 0.5em; */
 }
 
-/* .section > *:first-child {
-    width: 100%;
-} */
-
-/* .section > *:nth-child(2) {
-    width: 100%;
-} */
-
-.section {
+.section >* {
     flex: 1;
-    flex-basis: 1
-  }
+}
 
 .card {
-    padding: 0.5em;
+    flex: 1;
+    padding: 0.75em;
     margin: 0.25em;
     background-color: rgb(255, 255, 255);
-    /* align-content: space-between; */
-    border: 1px solid var(--darkergrey);
-    min-width: 200px;
-    min-height: 200px;
-    flex-basis: 1
+    border: 1px solid var(--purple);
+    min-width: 150px;
+    min-height: 150px;
 }
 
 #members > div {
@@ -309,7 +296,7 @@ p.main {
 }
 
 #teaser p.main:hover {
-    color: rgb(0, 64, 255)
+    color: var(--purple)
 }
 
 
@@ -319,6 +306,6 @@ p.main {
 
 @keyframes teaser {
     0%   {color: white;}
-    50%  {color: rgb(0, 64, 255);}
+    50%  {color: var(--purple);}
     100%  {color: white;}
 }
