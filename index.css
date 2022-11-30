@@ -260,17 +260,32 @@ main {
     background-color: transparent;
 }
 
+#left-sidebar > .aside {
+    min-height: 500px;
+    background-color: rgb(92, 0, 252);
+}
+
+
+#right-sidebar > .aside {
+    min-height: 500px;
+    background-color: rgb(92, 0, 252);
+}
+
 /* /sidebars */
 
 #teaser {
-    font-size: 2.2em;
-    margin-top: 64px;
-    margin-bottom: 6em;
+    font-size: 1.9em;
+    height: 500px;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(92, 0, 252);
+    background-image: url("./assets/pattern.png");
+    background-size: 22px 22px;
 }
 
 #teaser p {
     font-size: 1.0em;
-    color: rgb(122, 122, 122);
+    color:white;
     font-weight: lighter;
 }
 
@@ -282,23 +297,18 @@ a {
 
 p.main {
     font-size: 2.2em;
-    color: var(--lightgrey)
+    color: white
 }
 
 #teaser p.main {
     font-size: 2.2em;
     color: rgb(255, 255, 255);
     font-weight: lighter;
-    text-shadow: 1px 1px 2px var(--purple);
+    /* text-shadow: 1px 1px 2px var(--purple); */
     transition: color .9s ease-in-out;
     animation-name: teaser;
     animation-duration: 16s;
 }
-
-#teaser p.main:hover {
-    color: var(--purple)
-}
-
 
 .no {
     color: var(--darkgrey)
@@ -306,6 +316,6 @@ p.main {
 
 @keyframes teaser {
     0%   {color: white;}
-    50%  {color: var(--purple);}
+    50%  {color: #dbdcff}
     100%  {color: white;}
 }
