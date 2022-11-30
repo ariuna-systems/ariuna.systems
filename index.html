@@ -15,9 +15,8 @@
 
       gtag('config', 'G-947QCV7NDM');
     </script>
-    <!-- CORS problems with module -->
-    <script type="text/javascript" src="./script.js" defer></script>
-    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="index.js" defer></script>
+    <link rel="stylesheet" href="index.css">
   </head>
   <body>
     <div id="container">
@@ -25,51 +24,86 @@
         <div id="l-header"></div>
         <nav>
           <div id="left-nav">
-            <a id="logo" href="https://www.wavelet.space/"><image src="./logo.png" /></a>
+            <a id="logo" href="https://www.wavelet.space/"><image src="./assets/logo.png" /></a>
             <a id="name" href="https://www.wavelet.space/">Wavelet</a>
           </div>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Members</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#members">Members</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
         <div id="r-header"></div>
-        </header>
-        <aside id="left-sidebar"></aside>
-        <main id="content" role="main">
-          <div class="section" id="teaser">
-            <p class="main">
-              We simulate and visualize complex systems.
-            </p>
-            <p>
-              We are collective of <a href="">experts</a> in <span class="no">processing</span>, analyzing, <span class="no">simulation</span>, and <span class="no">visualization</span> of complex systems.
-            </p>
-            <p>
-              We develop custom <span class="no">no</span>de/<span class="no">code </span><a href="">platform</a> for workflow automation, monitoring, and maintanance.
-            </p>
-          </div>
-          <!-- <div class="section" id="products">
-            <p>WaveletSpace is a collective composed of experts in the audiovisual signal processing, simulation and visualization of complex systems.
-              We develop custom node/code software/hardware platform to simplify the complex system development and maintanance.</p>
-          </div> -->
-        </main>
-        <aside id="right-sidebar"></aside>
-        <footer>
-          <div class="inner">
-            <div id="copyright">
-              &copy; <span id="copyright-year"></span>
-                <a href="http://www.wavelet.space">Wavelet</a>,&nbsp;
-                <a href="https://github.com/wavelet-space">GitHub</a>
+      </header>
+      <aside id="left-sidebar"></aside>
+      <main id="content" role="main">
+
+        <div class="section" id="teaser">
+          <p class="main">We simplify complexity.</p>
+        </div>
+
+        <div class="section" id="services">
+          <h2>Services</h2>
+
+          <div>
+            <div class="card purple">
+              <h3>Quantitative analytics</h3>
+              <p>We do quantitative data analysis with specialisation in time series data analysis in various domains e.g
+                digital signals, data from embeded systems and sensors, financial markets data etc. Do you need to process
+                and analyse huge data sets, or simulate a complex process to get insight?
+                <a href="#contact">Contact us</a>, we are ready to help!</p>
             </div>
-            <div>
-              <em>We immaterialize and slowly drift into the unknown&hellip;</em>
+
+            <div class="card purple">
+              <h3>Simulation and modelling</h3>
+              <p></p>
+            </div>
+
+            <div class="card">
+              <h3>Software development</h3>
+              <p>We offer custom software development with strong empahasize on security, maintability and user experience.</p>
             </div>
           </div>
-        </footer>
-      </div>
+        </div>
+
+
+        <div class="section" id="members">
+          <h2>Members</h2>
+          <div>
+            <div class="card">David L.</div>
+            <div class="card">Petra B.</div>
+            <div class="card">Pavel S.</div>
+            <div class="card">Kryštof P.</div>
+          </div>
+        </div>
+
+        <div class="section" id="products">
+          <h2>Products</h2>
+          <p> We develop <span class="no">no</span>de/<span class="no">code </span>platform for real-time data processing and visualisation.
+            At this moment the project is in early stage of developement.</p>
+        </div>
+
+        <div class="section" id="contact">
+            <h2>Contact</h2>
+            info@wavelet.space
+            <wui-button text="Submit"></wui-button>
+            <div></div>
+        </div>
+      </main>
+
+      <aside id="right-sidebar"></aside>
+
+      <footer>
+        <div class="inner">
+          <div id="copyright">
+            &copy; <span id="copyright-year"></span>
+              <a href="http://www.wavelet.space">Wavelet</a>,&nbsp;
+              <a href="https://github.com/wavelet-space">GitHub</a>
+          </div>
+
+        </div>
+      </footer>
     </div>
   </body>
 </html>
