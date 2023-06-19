@@ -1,4 +1,4 @@
-# wavelet-space.github.io
+# wavelet.space
 
 **The Wavelet organizaton website.**
 
