@@ -308,7 +308,7 @@ p.main {
     color: white;
 
 }
-
+/* 
 #teaser p.main {
     font-size: 2.2em;
     color: rgb(0, 0, 0);
@@ -316,7 +316,7 @@ p.main {
     transition: color .9s ease-in-out;
     animation-name: teaser;
     animation-duration: 16s;
-}
+} */
 
 .no {
     color: var(--darkgrey)
