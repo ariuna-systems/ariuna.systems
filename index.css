@@ -192,25 +192,26 @@ nav li a:hover {
  */
 footer {
     grid-area: footer;
-    height: 64px;
-    background-color: white;
+    background-color: black;
     display: flex;
     justify-content: center;
 }
 
-.purple {
-    background-color: #6828ff;
-}
 
 footer .inner {
-    height: 64px;
-    /* max-width: 992px; */
+    height: 8rem;
     font-size: 1.0em;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     min-width: 1200px;
-    padding: 0 2rem
+    padding: 4rem 2rem;
+    color: white;
+}
+
+footer a {
+    color: white;
+    text-decoration: underline;
 }
 
 /* ******************************************************************
