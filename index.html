@@ -1,48 +1,65 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1,
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,
       shrink-to-fit=no">
-    <title>wavelet.space</title>
-    <!-- Google tag (gtag.js) -->
-    <script async
-      src="https://www.googletagmanager.com/gtag/js?id=G-947QCV7NDM"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <title>wavelet.space</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-947QCV7NDM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-      gtag('config', 'G-947QCV7NDM');
-    </script>
-    <script type="module" src="index.js" defer></script>
-    <link rel="stylesheet" href="index.css">
-  </head>
-  <body>
-    <div id="container">
-      <header>
-        <div id="l-header"></div>
-        <nav>
-          <div id="left-nav">
-            <a id="logo" href="https://www.wavelet.space/"><image src="./assets/logo.png" /></a>
-            <a id="name" href="https://www.wavelet.space/">Wavelet</a>
-          </div>
-          <ul>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#projects">Products</a></li>
-            <li><a href="#projects">Resources</a></li>
-            <li><a href="#company">Company</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-        <div id="r-header">
+    gtag('config', 'G-947QCV7NDM');
+  </script>
+  <script type="module" src="index.js" defer></script>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="t-header"></div>
+    <header>
+      <div id="l-header"></div>
+      <nav>
+        <div id="left-nav">
+          <a id="logo" href="https://www.wavelet.space/">
+            <image src="./assets/logo2.png" />
+          </a>
+          <a id="name" href="https://www.wavelet.space/">Wavelet</a>
         </div>
-      </header>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Products</a></li>
+          <li><a href="#projects">Resources</a></li>
+          <li><a href="#company">Company</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div id="r-header">
+      </div>
+    </header>
 
-      <main id="content" role="main">
+    <main id="content" role="main">
 
-        <div class="section" id="teaser">
-          <p>Signal intelligence company</p>
+      <div class="section" id="teaser">
+        <h3>Signal processing in scale</h3>
+        <p>We develop dataflow systems for real-time stream analytics in the cloud and on edge
+          devices.</p>
+      </div>
+
+      <div class="section" id="products">
+        <h2>Products</h2>
+        <div>
+          <div class="card">
+            <h3>Arjuna</h3>
+            <p></p>
+            <p>Platform for low-latency, high-throughpout, real-time signal processing and insight.
+              </sdiv>
+          </div>
         </div>
 
         <div class="section" id="services">
@@ -50,26 +67,18 @@
 
           <div>
             <div class="card">
-              <h3>Defence</h3>
+              <h3>Streams</h3>
               <p></p>
             </div>
             <div class="card">
-              <h3>Energy</h3>
+              <h3>Storage</h3>
               <p></p>
             </div>
             <div class="card">
-              <h3>Security</h3>
+              <h3>Sensors</h3>
               <p></p>
             </div>
           </div>
-        </div>
-
-        <div class="section" id="products">
-          <h2>Products</h2>
-          <div>
-            <h3></h3>
-            <p> We develop platform for real-time data insight.
-            </div>
         </div>
 
         <div class="section" id="company">
@@ -79,29 +88,31 @@
             <div class="card">FM</div>
             <div class="card">AS</div>
           </div>
+          <h3>Partners</h3>
+          <div>
+            <div class="card">Microsoft</div>
+          </div>
         </div>
-
 
         <div class="section" id="contact">
-            <h2>Contact</h2>
-            contact@wavelet.space
-            <wui-button text="Submit"></wui-button>
-            <div></div>
+          <h2>Contact</h2>
+          contact@wavelet.space
+          <wui-button text="Submit"></wui-button>
+          <div></div>
         </div>
 
-      </main>
-
-
-      <footer>
-        <div class="inner">
-          <div id="copyright">
-            &copy; <span id="copyright-year"></span>
-              <a href="http://www.wavelet.space">Wavelet</a>,&nbsp;
-              <a href="https://github.com/wavelet-space">GitHub</a>
-          </div>
-
+    </main>
+    <footer>
+      <div class="inner">
+        <div id="copyright">
+          &copy; <span id="copyright-year"></span>
+          <a href="http://www.wavelet.space">Wavelet</a>,&nbsp;
+          <a href="https://github.com/wavelet-space">GitHub</a>
         </div>
-      </footer>
-    </div>
-  </body>
+
+      </div>
+    </footer>
+  </div>
+</body>
+
 </html>
