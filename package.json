@@ -1,0 +1,23 @@
+{
+    "name": "arjuna-website",
+    "version": "0.1.0",
+    "main": "index.js",
+    "author": "Arjuna Systems",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "vite": "6.3.5",
+        "vite-plugin-static-copy": "3.0.0"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "vite dev",
+        "build": "vite build --emptyOutDir",
+        "watch": "vite build --watch",
+        "serve": "vite preview"
+    },
+    "dependencies": {
+        "path": "^0.12.7",
+        "url": "^0.11.4"
+    }
+}

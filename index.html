@@ -1,115 +1,95 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1,
-      shrink-to-fit=no">
-  <title>wavelet.space</title>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-947QCV7NDM"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-947QCV7NDM');
-  </script>
-  <script type="module" src="index.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Arjuna Systems - Turning real-time data into real-world decisions">
+  <title>Arjuna Systems</title>
   <link rel="stylesheet" href="index.css">
+  <script type="module" src="index.js" defer></script>
 </head>
 
 <body>
   <div id="container">
-    <div id="t-header"></div>
     <header>
-      <div id="l-header"></div>
-      <nav>
+      <div id="header-left-block"></div>
+      <nav aria-label="Main navigation">
         <div id="left-nav">
-          <a id="logo" href="https://www.wavelet.space/">
-            <image src="./assets/logo2.png" />
+          <a id="logo" href="https://www.arjuna.systems/" aria-label="Arjuna Systems Home">
+            <img src="assets/logo-512x512-transparent.png" alt="Arjuna Systems Logo">
           </a>
-          <a id="name" href="https://www.wavelet.space/">Wavelet</a>
+          <a id="name" href="https://www.arjuna.systems/">arjuna</a>
         </div>
         <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#projects">Products</a></li>
-          <li><a href="#projects">Resources</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#resources">Resources</a></li>
           <li><a href="#company">Company</a></li>
-          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-      <div id="r-header">
-      </div>
+      <div id="header-right-block"></div>
     </header>
 
     <main id="content" role="main">
+      <section id="teaser">
+        <h1>Turning real-time data into real-world decisions</h1>
+      </section>
 
-      <div class="section" id="teaser">
-        <h3>Digital Signal Processing in Scale</h3>
-        <p>Dataflow systems for real-time stream analytics in the cloud and on edge
-          devices.</p>
-      </div>
+      <section id="mission" aria-labelledby="mission-title">
+        <h2 id="mission-title">Mission</h2>
+        <p>
+          Transforming how regulated industries see, understand, and respond to complex
+          environments—with live data and autonomous insight.
+        </p>
 
-      <div class="section" id="products">
-        <h2>Products</h2>
-        <div>
-          <div class="card">
-            <h3>Arjuna</h3>
-            <p></p>
-            <p>Platform for low-latency, high-throughpout, real-time signal processing and insight.
-              </sdiv>
-          </div>
+        <h3>Domain-driven approach</h3>
+        <p>
+          Terminology should align with the target users' existing vocabulary and
+          mental models of data analysis tasks. Understanding the user's perspective
+          is crucial for effective design.
+        </p>
+      </section>
+
+      <section id="platform" aria-labelledby="platform-title">
+        <h2 id="platform-title">Platform</h2>
+        <p>
+          Aether platform fuses data, sensors, and intelligence into one commanding
+          view—turning uncertainty into action across physical and digital domains.
+        </p>
+        <p>Throughput of more than 250,000,000 EPS – events per second.</p>
+      </section>
+
+
+      <section id="solutions" aria-labelledby="solutions-title">
+        <h2 id="solutions-title">Solutions</h2>
+        <div class="solution-grid">
+          <div class="solution-item">Energy and Utilities</div>
+          <div class="solution-item">Military and Defense</div>
         </div>
+      </section>
 
-        <div class="section" id="services">
-          <h2>Services</h2>
 
-          <div>
-            <div class="card">
-              <h3>Streams</h3>
-              <p></p>
-            </div>
-            <div class="card">
-              <h3>Storage</h3>
-              <p></p>
-            </div>
-            <div class="card">
-              <h3>Sensors</h3>
-              <p></p>
-            </div>
-          </div>
-        </div>
+      <section id="resources" aria-labelledby="resources-title">
+        <h2 id="resources-title">Resources</h2>
+      </section>
 
-        <div class="section" id="company">
-          <h2>Company</h2>
-          <div>
-            <div class="card">DL</div>
-            <div class="card">FM</div>
-            <div class="card">AS</div>
-          </div>
-          <h3>Partners</h3>
-          <div>
-            <div class="card">Microsoft</div>
-          </div>
-        </div>
-
-        <div class="section" id="contact">
-          <h2>Contact</h2>
-          contact@wavelet.space
-          <wui-button text="Submit"></wui-button>
-          <div></div>
-        </div>
-
+      <section id="company" aria-labelledby="company-title">
+        <h2 id="company-title" class="visually-hidden">Company Information</h2>
+        <address>
+          Arjuna Systems Group s.r.o.<br>
+          <a href="mailto:office@arjuna.systems">Contact us</a>
+        </address>
+      </section>
     </main>
+
     <footer>
       <div class="inner">
         <div id="copyright">
           &copy; <span id="copyright-year"></span>
-          <a href="http://www.wavelet.space">Wavelet</a>,&nbsp;
-          <a href="https://github.com/wavelet-space">GitHub</a>
+          <a href="https://www.arjuna.systems">Wavelet</a>,
+          <a href="https://github.com/arjuna-group">GitHub</a>
         </div>
-
       </div>
     </footer>
   </div>

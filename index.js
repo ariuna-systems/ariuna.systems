@@ -1,3 +1,5 @@
-let currentYear = new Date().getFullYear();
-let copyrighYearElement = document.getElementById("copyright-year");
-copyrighYearElement.innerHTML = currentYear;
+document.addEventListener("DOMContentLoaded", function () {
+    let currentYear = new Date().getFullYear();
+    let copyrighYearElement = document.getElementById("copyright-year");
+    copyrighYearElement.innerHTML = currentYear;
+})
