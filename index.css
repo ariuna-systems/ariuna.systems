@@ -59,7 +59,6 @@ body {
     flex-direction: column;
     box-sizing: border-box;
     margin: 0 auto;
-    background-color: none;
 }
 
 /* Typography */
@@ -100,7 +99,6 @@ p {
             rgba(24, 28, 37, 0.97) 85%,
             rgba(15, 15, 15, 0.97) 100%);
     background-size: cover;
-
 }
 
 /* Header */
@@ -114,7 +112,7 @@ header {
     border-top: 1px solid var(--darkgrey);
     border-bottom: 1px solid var(--darkgrey);
     font-size: 1rem;
-    margin-top: 0.1rem;
+    margin-top: 0.5rem;
     border-radius: 0.15rem;
 }
 
@@ -183,7 +181,7 @@ nav #logo img {
 /* Sections */
 section {
     /* padding: var(--section-padding); */
-    background-color: none;
+    background-color: rgba(203, 203, 205, 0.97);
     border-radius: 0.15rem;
 }
 
@@ -218,18 +216,12 @@ section#technology {
     width: 100%;
 
     .technology-tile {
+
         background-color: #566460;
         padding: 2rem;
         border-radius: 0.15rem;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
         transition: all 0.3s ease-in-out;
-        flex: 1 1 300px;
-        min-width: 260px;
-        max-width: 400px;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
     }
 }
 
@@ -241,39 +233,14 @@ section#platform {
 }
 
 section#company {
+    background-color: #3e3e3e;
+    ;
     width: 100%;
-}
 
-.company-tile {
-    background: rgba(255, 255, 255, 0.07);
-    border-radius: 8px;
-    padding: 2.5rem 2rem;
-    flex: 1 1 300px;
-    min-width: 260px;
-    max-width: 400px;
-    color: var(--white);
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.company-tile h3 {
-    margin-top: 0;
-    color: var(--white);
-    font-size: 2rem;
 }
 
 section#resources {
     background-color: transparent;
-
-    .resource-tile {
-        background: rgba(255, 255, 255, 0.07);
-        padding: 2rem;
-        border-radius: 0.15rem;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-        transition: all 0.3s ease-in-out;
-    }
 }
 
 footer {
@@ -281,6 +248,7 @@ footer {
     display: flex;
     justify-content: center;
     border-top: 1px solid var(--darkgrey);
+    background-color: black;
 }
 
 footer .inner {
@@ -315,7 +283,8 @@ main {
     margin: 0.05rem;
     padding: 0;
     text-align: left;
-    background-color: none;
+    background-color: transparent;
+    */
 }
 
 #teaser h1 {
