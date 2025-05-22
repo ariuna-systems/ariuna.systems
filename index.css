@@ -272,8 +272,12 @@ main {
 
 #teaser h1 {
     color: #e4e4e4;
-    font-size: 4.6rem;
-    font-weight: lighter;
+    font-size: 5rem;
+    width: 85%;
+    font-weight: 400;
+    display: block;
+    margin: 4rem auto;
+    text-align: left;
 }
 
 #teaser p {
