@@ -90,16 +90,6 @@ p {
     line-height: 1.3em;
 }
 
-/* Layout */
-#container {
-    width: 100%;
-    background: linear-gradient(180deg,
-            rgba(28, 30, 34, 0.97) 0%,
-            rgba(36, 44, 60, 0.97) 15%,
-            rgba(24, 28, 37, 0.97) 85%,
-            rgba(15, 15, 15, 0.97) 100%);
-    background-size: cover;
-}
 
 /* Header */
 header {
@@ -112,7 +102,6 @@ header {
     border-top: 1px solid var(--darkgrey);
     border-bottom: 1px solid var(--darkgrey);
     font-size: 1rem;
-    margin-top: 0.5rem;
     border-radius: 0.15rem;
 }
 
@@ -233,14 +222,29 @@ section#platform {
 }
 
 section#company {
-    background-color: #3e3e3e;
-    ;
-    width: 100%;
+    background-color: transparent;
 
+    .company-tile {
+        background-color: #0b0b0b;
+        padding: 2rem;
+        border-radius: 0.15rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        transition: all 0.3s ease-in-out;
+    }
+
+    margin-bottom: 8rem;
 }
 
 section#resources {
     background-color: transparent;
+
+    .resource-tile {
+        background-color: #0b0b0b;
+        padding: 2rem;
+        border-radius: 0.15rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        transition: all 0.3s ease-in-out;
+    }
 }
 
 footer {
@@ -248,7 +252,6 @@ footer {
     display: flex;
     justify-content: center;
     border-top: 1px solid var(--darkgrey);
-    background-color: black;
 }
 
 footer .inner {
@@ -284,7 +287,6 @@ main {
     padding: 0;
     text-align: left;
     background-color: transparent;
-    */
 }
 
 #teaser h1 {
