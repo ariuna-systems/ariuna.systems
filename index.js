@@ -6,9 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
     navToggle.addEventListener("click", () => {
       const isOpen = mainNav.classList.toggle("open");
       navToggle.classList.toggle("open", isOpen);
+      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
     mainNav.addEventListener("click", () => {
       console.log("click");
+      navToggle.classList.remove("open");
       mainNav.classList.remove("open");
       navToggle.setAttribute("aria-expanded", "false");
     });
