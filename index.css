@@ -313,6 +313,7 @@ footer {
 
 footer .inner {
   height: 8rem;
+  padding-top: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
