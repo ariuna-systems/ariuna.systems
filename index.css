@@ -10,7 +10,7 @@
   --darkgrey: rgb(31, 31, 31);
   --darkergrey: rgb(75, 75, 75);
   --lightgrey: rgb(122, 122, 122);
-  --purple: #6828ff;
+  --purple: #8653ff;
   --darkblue: #201b2f;
 
   /* Typography */
@@ -134,7 +134,7 @@ header {
   left: 0;
   width: 100%;
   height: var(--header-height);
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -159,7 +159,7 @@ nav {
   justify-content: space-between;
   font-size: 1rem;
   box-sizing: border-box;
-  padding: 0rem;
+  padding: 0 1.5rem;
 }
 
 nav ul,
@@ -380,6 +380,12 @@ main {
   gap: 0rem;
 }
 
+.company-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.6rem;
+}
+
 .hero-container {
   display: flex;
   flex-direction: column;
@@ -458,6 +464,10 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .company-cards {
+    grid-template-columns: 1fr;
+  }
+
   #container {
     max-width: 100vw;
     padding: 0;
@@ -495,7 +505,7 @@ a {
     flex-direction: column;
     align-items: flex-start;
     min-width: 0;
-    padding: 0;
+    padding: 0 1rem;
     height: auto;
   }
 
