@@ -48,13 +48,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: var(--font-family);
-  background: linear-gradient(
-    180deg,
-    rgba(28, 30, 34, 0.97) 0%,
-    rgba(36, 44, 60, 0.97) 15%,
-    rgba(24, 28, 37, 0.97) 85%,
-    rgba(15, 15, 15, 0.97) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(28, 30, 34, 0.97) 0%,
+      rgba(36, 44, 60, 0.97) 15%,
+      rgba(24, 28, 37, 0.97) 85%,
+      rgba(15, 15, 15, 0.97) 100%);
   background-size: cover;
 }
 
@@ -344,7 +342,7 @@ main {
   font-weight: 400;
   display: block;
   text-align: left;
-  padding: 9rem 3.5rem;
+  padding: 4rem 3.5rem 3.5em 3.5rem;
 }
 
 #mission-card {
@@ -436,7 +434,7 @@ a {
   box-sizing: border-box;
 }
 
-.flex-row > section {
+.flex-row>section {
   flex: 1 1 50%;
   max-width: 50%;
   box-sizing: border-box;
@@ -453,7 +451,7 @@ a {
     gap: 0;
   }
 
-  .flex-row > section {
+  .flex-row>section {
     max-width: 100%;
     width: 100%;
   }
@@ -544,8 +542,8 @@ a {
     gap: 1.2rem;
   }
 
-  .flex-row > section,
-  .flex-row > div {
+  .flex-row>section,
+  .flex-row>div {
     max-width: 100% !important;
     width: 100% !important;
     min-width: 0;
