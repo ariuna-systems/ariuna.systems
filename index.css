@@ -16,16 +16,19 @@
   /* Typography */
   --font-family: Arial, Helvetica, sans-serif;
   --font-size-base: 62.5%;
-  --font-size-h1: 3rem;
+  --font-size-h1: 4.5rem;
   --font-size-h2: 2rem;
   --font-size-h3: 1.6rem;
   --font-size-h4: 1.2rem;
   --font-size-p: 1.6em;
 
   /* Layout */
-  --container-width: 1200px;
-  --header-height: 2.2rem;
-  --section-padding: 2rem;
+  --container-width: 1280px;
+  --header-height: 3rem;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 /* Reset */
@@ -33,11 +36,14 @@ html {
   scroll-behavior: smooth;
   background-color: black;
   width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
   /* font-size: var(--font-size-base); */
 }
 
 body {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -53,12 +59,12 @@ body {
 }
 
 .container {
-  max-width: 1200px; /* Your desired maximum content width */
-  margin-left: auto; /* These two lines center the container */
+  max-width: var(--container-width);
+  margin-left: auto;
   margin-right: auto;
-  padding-left: 20px; /* Adds space on the sides, crucial for smaller screens */
-  padding-right: 20px; /* so content doesn't touch the viewport edges */
-  box-sizing: border-box; /* Recommended: includes padding and border in the element's total width and height */
+  padding-left: 3rem;
+  padding-right: 3rem;
+  box-sizing: border-box;
 }
 /* Center the 
  container using grid */
@@ -95,6 +101,7 @@ h3,
 h4 {
   color: var(--headings);
   font-family: "Poppins", sans-serif;
+  margin: 0;
 }
 
 h2,
@@ -108,16 +115,22 @@ p {
   line-height: 1.3em;
 }
 
+.text-large {
+  font-size: 1.5rem;
+}
+
 /* Header */
 header {
+  box-sizing: border-box;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  height: var(--header-height);
+  padding: 0.5rem 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: var(--header-height);
   background-color: rgba(14, 14, 14, 0.98);
   border-bottom: 1px solid #16171b;
   font-size: 1rem;
@@ -143,7 +156,7 @@ nav {
 }
 
 nav ul,
-#left-nav {
+#home {
   display: inline-flex;
   align-items: center;
   height: 100%;
@@ -151,6 +164,12 @@ nav ul,
   padding: 0;
   list-style-type: none;
   overflow: hidden;
+}
+
+#home {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
 }
 
 nav a {
@@ -165,9 +184,9 @@ nav a:hover {
   color: var(--white);
 }
 
-#left-nav a {
+#home a {
   padding: 0 0.2rem;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 nav li {
@@ -177,15 +196,15 @@ nav li {
 
 nav #logo {
   padding: 0;
+  height: 2rem;
 }
 
 nav #logo img {
-  height: var(--header-height);
+  height: 2rem;
 }
 
 /* Sections */
 section {
-  /* padding: var(--section-padding); */
   /* background-color: rgba(203, 203, 205, 0.97); */
   border-radius: 0.15rem;
   width: 100%;
@@ -199,50 +218,50 @@ section {
 }
 
 section#solutions {
-  /* background-color: rgb(121, 110, 98); */
-  background-color: transparent;
+  background-color: #111;
   width: 100%;
 
+  .solution {
+    background-color: rgb(58, 70, 83);
+    padding: 2rem;
+    border-radius: 0.15rem;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease-in-out;
+  }
   .solution-cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1.6rem;
   }
-
-  .solution {
-    /* background-color: rgb(172, 156, 136); */
-    background-color: rgb(79, 89, 99);
-    padding: 2rem;
-    border-radius: 0.15rem;
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.25);
-    transition: all 0.3s ease-in-out;
-  }
 }
 
-section#platform {
-  background-color: transparent;
+section#architecture {
   width: 100%;
 
-  .platform-cards {
+  .architecture-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.6rem;
   }
 
-  .platform-tile {
-    background-color: #566460;
+  .architecture-tile {
+    background-color: #384843;
     padding: 2rem;
     border-radius: 0.15rem;
     box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.25);
     transition: all 0.3s ease-in-out;
   }
+
+  h2 {
+    margin-bottom: 2rem;
+  }
 }
 
 section#company {
-  background-color: transparent;
+  background: #0b0b0b;
 
   .company-tile {
-    background-color: #0b0b0b;
+    background-color: #222222;
     padding: 2rem;
     border-radius: 0.15rem;
     box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.25);
@@ -264,10 +283,6 @@ section#resources {
   }
 }
 
-section#future {
-  background: #0b0b0b;
-}
-
 footer {
   grid-area: footer;
   display: flex;
@@ -277,7 +292,6 @@ footer {
 
 footer .inner {
   height: 8rem;
-  min-width: var(--container-width);
   padding: 4rem 2rem;
   display: flex;
   flex-direction: row;
@@ -296,13 +310,62 @@ main {
   scroll-behavior: smooth;
 }
 
+#teaser {
+  text-align: left;
+  padding-bottom: 10rem;
+}
+
+#teaser h1 {
+  color: #e4e4e4;
+  width: 100%;
+  font-weight: 400;
+  display: block;
+  text-align: left;
+  padding: 9rem 3.5rem;
+}
+
+#mission-card {
+  background-color: #3f375b;
+}
+
+.teaser-card {
+  padding: 2rem;
+
+  h2 {
+    color: #d0d0d0;
+  }
+  p {
+    color: #fff;
+  }
+}
+
+#platform-card {
+  background-color: #3d5651;
+  background-color: #0a0a0a;
+
+  h2 {
+    color: #c0c0c0;
+  }
+}
+
+.scroll-anchor {
+  scroll-margin: 10rem;
+}
+
+.teaser-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+}
+
 .hero-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 3rem;
-  padding: 10rem 0;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
   text-align: left;
   background-color: transparent;
 
@@ -330,7 +393,8 @@ a {
   margin: 0 auto;
 }
 
-#solutions h2 {
+#solutions h2,
+#company-title {
   margin-bottom: 2rem;
 }
 
@@ -350,6 +414,10 @@ a {
 
 /* Responsive: stack on small screens */
 @media (max-width: 900px) {
+  h1 {
+    font-size: 3rem;
+  }
+
   .flex-row {
     flex-direction: column;
     gap: 0;
@@ -358,6 +426,14 @@ a {
   .flex-row > section {
     max-width: 100%;
     width: 100%;
+  }
+
+  section#solutions .solution-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  section#architecture .architecture-cards {
+    grid-template-columns: 1fr;
   }
 
   #container {
@@ -372,6 +448,11 @@ a {
     font-size: 55%;
   }
 
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   #container {
     grid-template-columns: 1fr;
     padding: 0;
@@ -382,8 +463,10 @@ a {
 
   header {
     grid-template-columns: 1fr;
-    padding: 0 0.5rem;
     font-size: 0.95rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    height: 3.5rem;
   }
 
   nav {
@@ -394,8 +477,7 @@ a {
     height: auto;
   }
 
-  nav ul,
-  #left-nav {
+  nav ul {
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
@@ -407,16 +489,20 @@ a {
     padding: 0.5rem 0;
   }
 
-  #hero h1 {
-    font-size: 2.2rem;
-    width: 100%;
-    margin: 2rem 0 1rem 0;
-    text-align: left;
+  .scroll-anchor {
+    scroll-margin: 2rem;
   }
 
   section {
-    padding: 1rem 0.5rem;
     border-radius: 0.1rem;
+  }
+
+  section#solutions .solution-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .teaser-cards {
+    flex-direction: column;
   }
 
   .flex-row {
@@ -433,15 +519,25 @@ a {
   }
 
   .solution,
-  .platform-tile,
+  .architecture-tile,
   .resource-tile {
     padding: 1rem;
     font-size: 1.1rem;
   }
 
-  h2,
+  #teaser h1 {
+    font-size: 2rem;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
   h3 {
-    font-size: 1.3rem;
+    font-size: 1.75rem;
   }
 
   footer .inner {
@@ -454,23 +550,22 @@ a {
 
 /* Hamburger menu styles */
 #nav-toggle {
+  padding: 0;
   display: none;
   flex-direction: column;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  justify-content: space-around;
+  width: 1.5rem;
+  height: 1.5rem;
   background: none;
   border: none;
   cursor: pointer;
-  margin-left: 1rem;
   z-index: 1001;
 }
 
 #nav-toggle span {
   display: block;
-  width: 2.5rem;
-  height: 0.3rem;
-  margin: 0.3rem 0;
+  width: 1.5rem;
+  height: 0.125rem;
   background: var(--white, #fff);
   border-radius: 2px;
   transition: 0.3s;
@@ -481,7 +576,6 @@ a {
   nav {
     flex-direction: row;
     align-items: center;
-    position: relative;
   }
 
   #nav-toggle {
@@ -493,10 +587,10 @@ a {
     flex-direction: column;
     position: absolute;
     top: 100%;
-    right: 0;
+    left: 0;
     background: rgba(20, 20, 20, 0.98);
-    width: 70vw;
-    max-width: 320px;
+    width: 100vw;
+    height: auto;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
     border-radius: 0 0 8px 8px;
     padding: 1.5rem 1rem;
@@ -510,10 +604,11 @@ a {
   #main-nav li {
     width: 100%;
     padding: 1rem 0;
+    font-size: 1.5rem;
     text-align: left;
   }
 
-  #left-nav {
+  #home {
     flex: 1;
   }
 }
