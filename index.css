@@ -10,7 +10,7 @@
   --darkgrey: rgb(31, 31, 31);
   --darkergrey: rgb(75, 75, 75);
   --lightgrey: rgb(122, 122, 122);
-  --purple: #6828ff;
+  --purple: #8653ff;
   --darkblue: #201b2f;
 
   /* Typography */
@@ -48,11 +48,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: var(--font-family);
-  background: linear-gradient(180deg,
-      rgba(28, 30, 34, 0.97) 0%,
-      rgba(36, 44, 60, 0.97) 15%,
-      rgba(24, 28, 37, 0.97) 85%,
-      rgba(15, 15, 15, 0.97) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(28, 30, 34, 0.97) 0%,
+    rgba(36, 44, 60, 0.97) 15%,
+    rgba(24, 28, 37, 0.97) 85%,
+    rgba(15, 15, 15, 0.97) 100%
+  );
   background-size: cover;
 }
 
@@ -134,7 +136,7 @@ header {
   left: 0;
   width: 100%;
   height: var(--header-height);
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -159,7 +161,7 @@ nav {
   justify-content: space-between;
   font-size: 1rem;
   box-sizing: border-box;
-  padding: 0rem;
+  padding: 0 1.5rem;
 }
 
 nav ul,
@@ -380,6 +382,12 @@ main {
   gap: 0.2rem;
 }
 
+.company-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.6rem;
+}
+
 .hero-container {
   display: flex;
   flex-direction: column;
@@ -428,7 +436,7 @@ a {
   box-sizing: border-box;
 }
 
-.flex-row>section {
+.flex-row > section {
   flex: 1 1 50%;
   max-width: 50%;
   box-sizing: border-box;
@@ -445,7 +453,7 @@ a {
     gap: 0;
   }
 
-  .flex-row>section {
+  .flex-row > section {
     max-width: 100%;
     width: 100%;
   }
@@ -455,6 +463,10 @@ a {
   }
 
   section#architecture .architecture-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .company-cards {
     grid-template-columns: 1fr;
   }
 
@@ -495,7 +507,7 @@ a {
     flex-direction: column;
     align-items: flex-start;
     min-width: 0;
-    padding: 0;
+    padding: 0 1rem;
     height: auto;
   }
 
@@ -532,8 +544,8 @@ a {
     gap: 1.2rem;
   }
 
-  .flex-row>section,
-  .flex-row>div {
+  .flex-row > section,
+  .flex-row > div {
     max-width: 100% !important;
     width: 100% !important;
     min-width: 0;
