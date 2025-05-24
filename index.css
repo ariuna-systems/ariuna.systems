@@ -243,16 +243,16 @@ section#solutions {
   }
 }
 
-section#architecture {
+section#technology {
   width: 100%;
 
-  .architecture-cards {
+  .technology-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.6rem;
   }
 
-  .architecture-tile {
+  .technology-tile {
     background-color: #384843;
     padding: 2rem;
     border-radius: 0.15rem;
@@ -460,7 +460,7 @@ a {
     grid-template-columns: 1fr 1fr;
   }
 
-  section#architecture .architecture-cards {
+  section#technology .technology-cards {
     grid-template-columns: 1fr;
   }
 
@@ -551,7 +551,7 @@ a {
   }
 
   .solution,
-  .architecture-tile,
+  .technology-tile,
   .resource-tile {
     padding: 1rem;
     font-size: 1.1rem;
