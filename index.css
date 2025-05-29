@@ -345,7 +345,7 @@ main {
   padding: 4rem 3.5rem 3.5em 3.5rem;
 }
 
-#mission-card {
+#mission {
   background-color: #3f375b;
 }
 
@@ -361,7 +361,7 @@ main {
   }
 }
 
-#platform-card {
+#platform {
   background-color: #3d5651;
   background-color: #0a0a0a;
 
@@ -586,8 +586,8 @@ a {
   display: none;
   flex-direction: column;
   justify-content: space-around;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 3rem;
+  height: 3rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -596,10 +596,10 @@ a {
 
 #nav-toggle span {
   display: block;
-  width: 1.5rem;
+  width: 3rem;
   height: 0.125rem;
   background: var(--white, #fff);
-  border-radius: 2px;
+  border-radius: 0.15rem;
   transition: 0.3s;
 }
 
@@ -624,7 +624,6 @@ a {
     width: 100vw;
     height: auto;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-    border-radius: 0 0 8px 8px;
     padding: 1.5rem 1rem;
     z-index: 1000;
   }
@@ -665,8 +664,8 @@ a {
   gap: 1rem;
   background: #181a1b;
   padding: 2rem 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 0.25rem rgba(0, 0, 0, 0.18);
   margin-top: 1rem;
   border: 1px solid #23272f;
 }
@@ -681,7 +680,7 @@ a {
 #contact-form textarea {
   padding: 0.75rem 1rem;
   border: 1px solid #23272f;
-  border-radius: 6px;
+  border-radius: 0.25rem;
   font-size: 1rem;
   font-family: inherit;
   background: #23272f;
@@ -702,11 +701,11 @@ a {
 }
 
 #contact-form button[type="submit"] {
-  background: #3a86ff;
+  background: #1c1c1c;
   color: #fff;
   border: none;
-  border-radius: 6px;
-  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  padding: 0.6rem 1.2rem;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -717,13 +716,192 @@ a {
 
 #contact-form button[type="submit"]:hover,
 #contact-form button[type="submit"]:focus {
-  background: #265bb5;
+  background: #3b5788;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  #contact-form {
-    padding: 1rem;
-    max-width: 100%;
+/* Light Theme using data-theme attribute */
+[data-theme="light"] {
+  background: linear-gradient(180deg,
+      rgba(248, 250, 252, 0.97) 0%,
+      rgba(241, 245, 249, 0.97) 15%,
+      rgba(236, 240, 244, 0.97) 85%,
+      rgba(226, 232, 240, 0.97) 100%);
+  color: #1a202c;
+
+  /* Light theme color variables */
+  --headings: #2d3748;
+  --text: #4a5568;
+  --white: #ffffff;
+  --darkgrey: rgb(226, 232, 240);
+  --darkergrey: rgb(203, 213, 225);
+  --lightgrey: rgb(160, 174, 192);
+}
+
+[data-theme="light"] section p,
+[data-theme="light"] section li {
+  color: var(--text);
+}
+
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4 {
+  color: var(--headings);
+}
+
+[data-theme="light"] header {
+  background-color: rgba(242, 242, 242, 0.98);
+  border-bottom: 1px solid #16171b;
+}
+
+[data-theme="light"] nav a {
+  color: rgb(19, 19, 19);
+}
+
+[data-theme="light"] nav a:hover {
+  color: rgb(151, 151, 151);
+}
+
+[data-theme="light"] #nav-toggle span {
+  background: #4a5568;
+}
+
+[data-theme="light"] #main-nav {
+  background-color: rgba(242, 242, 242, 0.98);
+  border-bottom: 1px solid #16171b;
+}
+
+[data-theme="light"] section#solutions {
+  background-color: #f7fafc;
+}
+
+[data-theme="light"] section#solutions .solution {
+  background-color: #ffffff;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] section#technology .technology-tile {
+  background-color: #ffffff;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] section#company {
+  background: #f8fafc;
+}
+
+[data-theme="light"] section#company .company-tile {
+  background-color: #ffffff;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] section#company .company-tile h1,
+[data-theme="light"] section#company .company-tile h2,
+[data-theme="light"] section#company .company-tile h3,
+[data-theme="light"] section#company .company-tile h4 {
+  color: #2d3748;
+}
+
+[data-theme="light"] .company-information h4 {
+  color: #4a5568;
+}
+
+[data-theme="light"] .teaser-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+[data-theme="light"] .teaser-card h2 {
+  color: #2d3748;
+}
+
+[data-theme="light"] .teaser-card p {
+  color: #4a5568;
+}
+
+[data-theme="light"] #mission {
+  background-color: #f0f4ff;
+}
+
+[data-theme="light"] #platform {
+  background-color: #f0fff4;
+}
+
+[data-theme="light"] #teaser h1 {
+  color: #2d3748;
+}
+
+[data-theme="light"] footer {
+  border-top: 1px solid #e2e8f0;
+}
+
+[data-theme="light"] footer .inner {
+  color: #4a5568;
+}
+
+[data-theme="light"] footer a {
+  color: #4299e1;
+}
+
+/* Light theme contact form */
+[data-theme="light"] #contact-form {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] #contact-form label {
+  color: #4a5568;
+}
+
+[data-theme="light"] #contact-form input,
+[data-theme="light"] #contact-form textarea {
+  background: #f7fafc;
+  border: 1px solid #cbd5e0;
+  color: #2d3748;
+}
+
+[data-theme="light"] #contact-form input:focus,
+[data-theme="light"] #contact-form textarea:focus {
+  border-color: #3a86ff;
+  background: #ffffff;
+}
+
+/* Theme toggle button */
+#theme-toggle {
+  background: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: none
+}
+
+/* #theme-toggle:hover {} */
+
+#theme-toggle .theme-icon {
+  transition: transform 0.3s ease;
+}
+
+#theme-toggle:hover .theme-icon {
+  transform: scale(1.1);
+}
+
+/* Light theme styles for toggle button */
+/* [data-theme="light"] #theme-toggle {} */
+
+[data-theme="light"] #theme-toggle:hover {
+  /* background: rgba(0, 0, 0, 0.05); */
+  /* border-color: #a0aec0; */
+}
+
+/* Responsive positioning */
+@media (max-width: 800px) {
+  #theme-toggle {
+    margin-left: auto;
+    margin-right: 1rem;
   }
 }

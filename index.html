@@ -16,12 +16,12 @@
     rel="stylesheet" />
 </head>
 
-<body>
+<body data-theme="light">
   <header>
     <nav aria-label="Main navigation">
       <div id="home">
         <a id="logo" href="#teaser" aria-label="Arjuna Systems Home">
-          <img src="assets/arjuna-logo.png" alt="Arjuna Systems Logo" />
+          <img src="assets/logo.png" alt="Arjuna Systems Logo" />
         </a>
         <a id="name" href="#teaser">arjuna</a>
       </div>
@@ -31,11 +31,14 @@
         <span></span>
       </button>
       <ul id="main-nav">
-        <li><a href="#platform-card">Platform</a></li>
+        <li><a href="#platform">Platform</a></li>
         <li><a href="#solutions">Solutions</a></li>
         <li><a href="#technology">Technology</a></li>
         <li><a href="#company">Company</a></li>
       </ul>
+      <button id="theme-toggle" aria-label="Toggle theme">
+        <span class="theme-icon"></span>
+      </button>
     </nav>
   </header>
 
@@ -45,7 +48,7 @@
         <h1>Turning real&#8209;time digital data into real&#8209;world decisions</h1>
 
         <div class="teaser-cards">
-          <div id="mission-card" class="teaser-card">
+          <div id="mission" class="teaser-card">
             <h2 id="mission-title">Mission</h2>
             <p class="text-large">
               Transforming how teams in regulated industries understand and
@@ -53,7 +56,7 @@
               insight.
             </p>
           </div>
-          <div id="platform-card" class="teaser-card scroll-anchor">
+          <div id="platform" class="teaser-card scroll-anchor">
             <h2 id="platform-title">Platform</h2>
             <p class="text-large">
               Our situational awareness platform fuses data and intelligence
@@ -230,6 +233,8 @@
       </div>
     </div>
   </footer>
+
+
 </body>
 
 </html>
