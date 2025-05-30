@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   let currentYear = new Date().getFullYear();
   let copyrighYearElement = document.getElementById("copyright-year");
   copyrighYearElement.innerHTML = currentYear;
@@ -70,8 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
   const themeIcon = themeToggle.querySelector('.theme-icon');
   
-  // Get saved theme from localStorage or default to 'dark'
-  const savedTheme = localStorage.getItem('theme') || 'dark';
+  // Get saved theme from localStorage or default to 'light'
+  const savedTheme = localStorage.getItem('theme') || 'light';
   document.body.setAttribute('data-theme', savedTheme);
   updateThemeIcon(savedTheme);
   
@@ -85,23 +85,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
   function updateThemeIcon(theme) {
-    const moonIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    // Light theme icon - dark outlined square (suggests switching to dark theme)
+    const lightSquareIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="8" width="8" height="8" stroke="currentColor" stroke-width="2" fill="none" rx="1"/>
     </svg>`;
     
-    const sunIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="12" cy="12" r="5" stroke="white" stroke-width="2"/>
-      <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    // Dark theme icon - white filled square (suggests switching to light theme)
+    const darkSquareIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="8" width="8" height="8" fill="white" rx="1"/>
     </svg>`;
     
-    themeIcon.innerHTML = theme === 'light' ? moonIcon : sunIcon;
+    themeIcon.innerHTML = theme === 'light' ? lightSquareIcon : darkSquareIcon;
     themeToggle.setAttribute('aria-label', 
       theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'
     );
