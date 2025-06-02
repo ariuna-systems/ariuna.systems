@@ -630,7 +630,9 @@ a {
     display: flex;
   }
 
+
   #main-nav {
+    padding: 0;
     display: none;
     flex-direction: column;
     position: absolute;
@@ -640,8 +642,30 @@ a {
     width: 100vw;
     height: auto;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-    padding: 1.5rem 1rem;
     z-index: 1000;
+  }
+
+  #main-nav.open {
+    background-color: rgb(26, 26, 26);
+  }
+
+  #main-nav.open li {
+    background-color: rgb(26, 26, 26);
+    padding: 0;
+    margin: 0
+  }
+
+  #main-nav.open li a {
+    display: block !important;
+    width: 100%;
+    padding: 1rem;
+    margin: 0;
+    background-color: rgb(26, 26, 26);
+    color: rgb(235, 235, 235);
+  }
+
+  #main-nav.open a:hover {
+    background-color: rgb(26, 26, 26);
   }
 
   #main-nav.open {
@@ -788,20 +812,46 @@ a {
 }
 
 [data-theme="light"] #main-nav {
-  background: transparent;
+  padding: 0;
+  background-color: transparent;
 }
+
+[data-theme="light"] #main-nav.open {
+  background-color: white;
+}
+
+[data-theme="light"] #main-nav.open li {
+  background-color: white;
+  padding: 0;
+  margin: 0
+}
+
+[data-theme="light"] #main-nav.open li a {
+  display: block !important;
+  width: 100%;
+  padding: 1rem;
+  margin: 0;
+  background-color: white;
+  color: rgb(37, 37, 37);
+}
+
+[data-theme="light"] #main-nav.open a:hover {
+  background-color: rgb(240, 240, 240);
+}
+
 
 [data-theme="light"] section#solutions {
   background-color: #f7fafc;
 }
 
 [data-theme="light"] section#solutions .solution {
-  background-color: #ffffff;
+  background-color: #b4cde8fa;
+
   box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="light"] section#technology .technology-tile {
-  background-color: #ffffff;
+  background-color: #acd3c7;
   box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
 }
 
@@ -840,7 +890,15 @@ a {
 }
 
 [data-theme="light"] #mission {
-  background-color: #f0f4ff;
+  background-color: #2f365e;
+
+  h2 {
+    color: #cbd5e0;
+  }
+
+  p {
+    color: #f4f6f9;
+  }
 }
 
 [data-theme="light"] #platform {
@@ -851,7 +909,7 @@ a {
   }
 
   p {
-    color: #cbd5e0;
+    color: #f4f6f9;
   }
 }
 
