@@ -992,3 +992,20 @@ a {
     margin-right: 1rem;
   }
 }
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between buttons */
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#theme-toggle .theme-icon {
+  width: 20px;
+  height: 20px;
+}
