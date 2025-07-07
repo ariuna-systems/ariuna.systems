@@ -16,7 +16,7 @@
   /* Typography */
   --font-family: "Lato", sans-serif;
   --font-size-base: 62.5%;
-  --font-size-1: 4.5rem;
+  --font-size-1: 5.5rem;
   --font-size-2: 2rem;
   --font-size-3: 1.6rem;
   --font-size-4: 1rem;
@@ -120,6 +120,11 @@ p {
   p {
     margin: 0;
   }
+}
+
+p.solutions-intro {
+  font-size: 2.5rem;
+  padding: 4rem 0
 }
 
 .text-large {
@@ -264,7 +269,7 @@ section#technology {
 
   .technology-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1.6rem;
   }
 
@@ -574,7 +579,7 @@ a {
   }
 
   #teaser h1 {
-    font-size: 2rem;
+    font-size: 15rem;
     padding-left: 0;
     padding-right: 0;
     width: 100%;
