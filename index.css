@@ -62,6 +62,8 @@ body {
   margin-right: auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   box-sizing: border-box;
 }
 
@@ -138,19 +140,18 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  height: var(--header-height);
+  height: calc(var(--header-height)/1.2);
   padding: 0.5rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(14, 14, 14, 0.3);
-  /* More transparent */
+  background-color: rgba(14, 14, 14, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  /* Safari support */
-  border-bottom: 1px solid rgba(22, 23, 27, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 1rem;
   border-radius: 0.15rem;
+  z-index: 1000;
 }
 
 #header-left-block,
@@ -166,6 +167,7 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   font-size: 1rem;
   box-sizing: border-box;
   padding: 0 1.5rem;
@@ -185,19 +187,20 @@ nav ul,
 #home {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 0.25rem;
 }
 
 nav a {
   display: inline-block;
   text-decoration: none;
-  color: rgb(197, 197, 197);
+  color: rgb(255, 255, 255);
   font-weight: normal;
   transition: color 0.3s ease-in-out;
 }
 
 nav a:hover {
-  color: var(--white);
+  color: #93c5fd;
 }
 
 #home a {
@@ -206,8 +209,42 @@ nav a:hover {
 }
 
 nav li {
-  padding: 0 2rem;
+  padding: 0 1rem;
   margin: 0;
+}
+
+/* Ensure main nav is visible and properly aligned on desktop */
+#main-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0 1rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+#main-nav li {
+  transition: opacity 0.3s ease;
+  margin: 1.0rem
+}
+
+#main-nav:hover li {
+  opacity: 1;
+}
+
+#main-nav li a {
+  color: #000000;
+  transition: color 0.3s ease;
+}
+
+#main-nav:hover li a {
+  color: #2d3748;
 }
 
 nav #logo {
@@ -354,16 +391,49 @@ main {
 
 #teaser {
   text-align: left;
-  padding-bottom: 10rem;
+  padding-bottom: 10rseem;
+  /* background-image: url('assets/hero.png'); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+  min-height: 55rem;
+}
+
+/* Add overlay for better text readability */
+#teaser::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 20, 40, 0.7) 0%,
+    rgba(0, 30, 60, 0.6) 50%,
+    rgba(0, 40, 80, 0.7) 100%
+  );
+  z-index: -1;
+}
+
+/* Ensure content is above overlay */
+#teaser > * {
+  position: relative;
+  z-index: 2;
 }
 
 #teaser h1 {
-  color: #e4e4e4;
+  color: #ffffff;
   width: 100%;
   font-weight: 400;
   display: block;
   text-align: left;
-  padding: 4rem 6.5rem 3.5em 6.5rem;
+  padding: 4rem 2rem 3.5rem 2rem;
+  line-height: 1.1;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 #mission {
@@ -371,7 +441,7 @@ main {
 }
 
 .teaser-card {
-  padding: 2rem;
+  padding: 4rem 2rem;
 
   h2 {
     color: #d0d0d0;
@@ -397,37 +467,95 @@ main {
 
 .teaser-cards {
   display: flex;
-  flex-direction: row;
-  gap: 0.2rem;
+  flex-direction: column; /* Stack cards vertically */
+  gap: 0; /* Remove gap between cards */
+  width: 100%;
 }
 
-.company-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.6rem;
+.teaser-card {
+  width: 100%;
+  padding: 6rem 4rem; /* Added horizontal padding for content inside the colored card */
+  margin: 0;
 }
 
-.hero-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-  padding-top: 10rem;
-  padding-bottom: 10rem;
-  text-align: left;
-  background-color: transparent;
+.teaser-card .container {
+  max-width: 1200px; /* Control content width */
+  margin: 0 auto; /* Center the content */
+  padding: 0 0; /* Remove padding since card now has padding */
+}
 
-  h1 {
-    color: var(--headings);
-    font-weight: 400;
-    display: block;
-    margin: 4rem auto;
-    text-align: left;
+.teaser-card h2 {
+  font-size: 3rem; /* Larger, more prominent headings */
+  font-weight: 600; /* Medium weight for better hierarchy */
+  margin-bottom: 2rem; /* More space below headings */
+  letter-spacing: -0.02em; /* Slight negative letter spacing for better readability */
+  line-height: 1.2; /* Tighter line height for headings */
+}
+
+.teaser-card p.text-large {
+  font-size: 2rem; /* Larger text size */
+  line-height: 1.5; /* Better line height for readability */
+  font-weight: 400; /* Normal weight */
+  letter-spacing: 0.01em; /* Slight positive letter spacing */
+  max-width: 800px; /* Constrain line length for better readability */
+}
+
+/* Better responsive typography */
+@media (max-width: 900px) {
+  .teaser-card {
+    padding: 5rem 3rem;
   }
+  
+  .teaser-card .container {
+    padding: 0 0; /* Remove container padding since card now has padding */
+  }
+  
+  .teaser-card h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .teaser-card p.text-large {
+    font-size: 1.8rem;
+    max-width: 100%;
+  }
+}
 
-  p {
-    max-width: 946px;
+@media (max-width: 600px) {
+  .teaser-card {
+    padding: 4rem 2rem;
+  }
+  
+  .teaser-card .container {
+    padding: 0 0; /* Remove container padding since card now has padding */
+  }
+  
+  .teaser-card h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .teaser-card p.text-large {
+    font-size: 1.6rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 400px) {
+  .teaser-card {
+    padding: 3rem 1.5rem;
+  }
+  
+  .teaser-card .container {
+    padding: 0 0; /* Remove container padding since card now has padding */
+  }
+  
+  .teaser-card h2 {
+    font-size: 1.8rem;
+  }
+  
+  .teaser-card p.text-large {
+    font-size: 1.4rem;
   }
 }
 
@@ -579,10 +707,17 @@ a {
   }
 
   #teaser h1 {
-    font-size: 15rem;
-    padding-left: 0;
-    padding-right: 0;
+    font-size: 3rem;
+    padding: 2rem 1rem 2rem 1rem;
     width: 100%;
+    line-height: 1.1;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Adjust background for mobile */
+  #teaser {
+    background-attachment: scroll;
   }
 
   h2 {
@@ -598,6 +733,22 @@ a {
     align-items: center;
     padding: 2rem 0.5rem;
     font-size: 0.95em;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 400px) {
+  #teaser h1 {
+    font-size: 2.5rem;
+    padding: 1.5rem 1rem 2rem 1rem;
+  }
+  
+  .teaser-card h2 {
+    font-size: 1.8rem;
+  }
+  
+  .teaser-card p.text-large {
+    font-size: 1.3rem;
   }
 }
 
@@ -620,7 +771,7 @@ a {
   width: 3rem;
   height: 0.125rem;
   background: var(--white, #fff);
-  border-radius: 0.15rem;
+  /* border-radius: 0.15rem; */
   transition: 0.3s;
 }
 
@@ -643,10 +794,8 @@ a {
     position: absolute;
     top: 100%;
     left: 0;
-    background: rgba(20, 20, 20, 0.98);
     width: 100vw;
     height: auto;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
     z-index: 1000;
   }
 
@@ -841,7 +990,7 @@ a {
 }
 
 [data-theme="light"] #main-nav.open a:hover {
-  background-color: rgb(240, 240, 240);
+  /* background-color: rgb(240, 240, 240); */
 }
 
 
