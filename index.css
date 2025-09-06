@@ -1,7 +1,11 @@
 /** 
- * Arjuna Systems CSS
+ * Ariuna Systems CSS
+ * Version: 1.0.0
  */
 :root {
+  /* Project Version */
+  --project-version: "1.0.0";
+  
   /* Modern Color Palette */
   --primary-blue: #2563eb;
   --primary-blue-light: #3b82f6;
@@ -1057,9 +1061,9 @@ a {
 .teaser-subtitle {
   margin-top: 1rem;
   margin-bottom: 0;
-  font-size: 1.125rem; /* clearly smaller than h1 (3rem) */
-  color: #6b7280; /* muted gray */
-  max-width: 68ch; /* constrain line length for readability */
+  font-size: 1.125rem;
+  color: #6b7280;
+  max-width: 68ch;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.4;
