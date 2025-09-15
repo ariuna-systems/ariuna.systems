@@ -14,11 +14,39 @@
   --gray-100: #f3f4f6;
   --gray-200: #e5e7eb;
   --gray-300: #d1d5db;
+  --gray-500: #6b7280;
   --gray-600: #4b5563;
   --gray-700: #374151;
   --gray-800: #1f2937;
   --gray-900: #111827;
   --white: #ffffff;
+  --black: #000000;
+  
+  /* Additional colors */
+  --blue-400: #3a86ff;
+  --blue-500: #4299e1;
+  --dark-blue: #2d3748;
+  --medium-gray: #4a5568;
+  --light-gray: #718096;
+  --lighter-gray: #959595;
+  --very-light-gray: #f5f5f5;
+  --near-white: #fbfbfb;
+  --light-blue-bg: #f7fafc;
+  --solution-blue: #b4cde8fa;
+  --tech-green: #acd3c7;
+  --dark-bg: #0a0a0a;
+  --darker-bg: #0b0b0b;
+  --light-text: #c0c0c0;
+  --very-dark: #1a202c;
+  --border-dark: rgba(22, 23, 27, 0.2);
+  --header-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  --shadow-light: 0px 10px 25px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0px 10px 25px rgba(0, 0, 0, 0.25);
+  --shadow-form: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --focus-ring: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  --nav-text: rgb(19, 19, 19);
+  --nav-text-hover: rgb(151, 151, 151);
+  --mobile-nav-text: rgb(37, 37, 37);
 
   /* Modern Shadows */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -36,6 +64,12 @@
   --font-size-4xl: 2.25rem;
   --font-size-5xl: 3rem;
   --font-size-6xl: 3.75rem;
+  
+  /* Additional font sizes */
+  --font-size-mobile: 0.95rem;
+  --font-size-large: 1.6rem;
+  --font-size-1-75: 1.75rem;
+  --font-size-1-2: 1.2rem;
   
   --font-size-1: 3rem;
   --font-size-2: 2rem;
@@ -56,7 +90,7 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: black;
+  
   width: 100%;
   height: 100vh;
   margin: 0;
@@ -122,7 +156,7 @@ h1,
 h2,
 h3,
 h4 {
-  color: #2d3748;
+  color: var(--dark-blue);
   font-family: "Lato", sans-serif;
   margin: 0;
   line-height: 1.2;
@@ -130,7 +164,7 @@ h4 {
 
 p {
   font-size: var(--font-size-base);
-  color: #4a5568;
+  color: var(--medium-gray);
   line-height: 1.6;
   margin: 0 0 1rem 0;
 }
@@ -149,8 +183,8 @@ a:hover {
   margin-top: 2rem;
   
   h4 {
-    color: #718096;
-    font-size: 0.875rem;
+    color: var(--light-gray);
+    font-size: var(--font-size-sm);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -165,15 +199,15 @@ a:hover {
 
   p {
     margin: 0;
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     line-height: 1.6;
-    color: #2d3748;
+    color: var(--dark-blue);
     margin-bottom: 0.25rem;
   }
 }
 
-p.solutions-intro {
-  font-size: var(--font-size-xl2);
+p.section-intro {
+  font-size: var(--font-size-2xl);
   line-height: 1.7;
   color: var(--gray-600);
   margin-bottom: 3rem;
@@ -192,30 +226,33 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(242, 242, 242, 0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(22, 23, 27, 0.2);
-  font-size: 1rem;
+  background: var(--header-bg);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: var(--font-size-base);
   z-index: 1000;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 
+              0 4px 16px rgba(0, 0, 0, 0.05),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 #header-left-block,
 #header-right-block {
-  height: var(--header-height);
+  height: calc(var(--header-height)/1.2);
   box-sizing: border-box;
 }
 
 /* Navigation */
 nav {
   width: var(--container-width);
-  height: var(--header-height);
+  height: calc(var(--header-height)/1.2);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   box-sizing: border-box;
   padding: 0 1.5rem;
 }
@@ -241,18 +278,18 @@ nav ul,
 nav a {
   display: inline-block;
   text-decoration: none;
-  color: rgb(19, 19, 19);
+  color: var(--nav-text);
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
 nav a:hover {
-  color: rgb(151, 151, 151);
+  color: var(--nav-text-hover);
 }
 
 #home a {
   padding: 0 0.2rem;
-  font-size: 1.2rem;
+  font-size: var(--font-size-1-2);
   color: var(--gray-900);
   font-weight: 600;
 }
@@ -293,8 +330,8 @@ nav li {
 }
 
 #main-nav li a:hover {
-  color: var(--primary-blue);
   background-color: transparent;
+  color: var(--lighter-gray);
 }
 
 nav #logo {
@@ -328,13 +365,22 @@ section {
 
   p,
   li {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     color: var(--gray-600);
   }
 }
 
+section#platform {
+
+  .section-intro {
+    color: var(--near-white);
+    font-size: var(--font-size-2xl);
+  }
+
+}
+
 section#solutions {
-  background-color: #f7fafc;
+  background-color: var(--light-blue-bg);
   width: 100%;
 
   h2 {
@@ -342,19 +388,25 @@ section#solutions {
     font-weight: 600;
     line-height: 1.2;
     margin-bottom: 2rem;
-    color: #2d3748;
+    color: var(--dark-blue);
   }
 
-  .solutions-intro {
-    color: #4a5568;
+  .section-intro {
+    color: var(--medium-gray);
+    font-size: var(--font-size-2xl);
   }
 
   .solution {
-    background-color: #b4cde8fa;
+    background-color: var(--solution-blue);
     padding: 2rem;
     border: 1px solid var(--gray-200);
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-light);
     transition: all 0.2s ease;
+  }
+
+  .solution h3 {
+    margin-bottom: 1rem;
+    margin-top: 0;
   }
 
   .solution:hover {
@@ -379,9 +431,9 @@ section#technology {
   }
 
   .technology-tile {
-    background-color: #acd3c7;
+    background-color: var(--tech-green);
     padding: 2rem;
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-light);
     transition: all 0.3s ease-in-out;
   }
 
@@ -396,20 +448,20 @@ section#technology {
 }
 
 section#company {
-  background: #f8fafc;
+  background: var(--light-blue-bg);
 
   .company-tile {
-    background-color: #ffffff;
+    background-color: var(--white);
     padding: 2rem;
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-light);
     transition: all 0.3s ease-in-out;
 
     h3 {
       margin-bottom: 1.5rem;
-      font-size: 1.875rem;
+      font-size: var(--font-size-3xl);
       font-weight: 700;
       line-height: 1.3;
-      color: #1a202c;
+      color: var(--very-dark);
     }
 
     h4 {
@@ -417,9 +469,9 @@ section#company {
     }
 
     > p {
-      font-size: 1.125rem;
+      font-size: var(--font-size-lg);
       line-height: 1.7;
-      color: #4a5568;
+      color: var(--medium-gray);
       margin-bottom: 1.5rem;
     }
 
@@ -427,7 +479,7 @@ section#company {
     h2,
     h3,
     h4 {
-      color: #2d3748;
+      color: var(--dark-blue);
     }
   }
 }
@@ -436,9 +488,9 @@ section#resources {
   background-color: transparent;
 
   .resource-tile {
-    background-color: #0b0b0b;
+    background-color: var(--darker-bg);
     padding: 2rem;
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--shadow-medium);
     transition: all 0.3s ease-in-out;
   }
 }
@@ -447,7 +499,7 @@ footer {
   grid-area: footer;
   display: flex;
   justify-content: center;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--gray-200);
   background-color: var(--gray-50);
 }
 
@@ -457,12 +509,12 @@ footer .inner {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 1em;
-  color: #4a5568;
+  font-size: var(--font-size-base);
+  color: var(--medium-gray);
 }
 
 footer a {
-  color: #4299e1;
+  color: var(--blue-500);
   text-decoration: underline;
 }
 
@@ -475,14 +527,14 @@ main {
 #teaser {
   text-align: left;
   padding: 8rem 0 4rem 0;
-  background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+  background: linear-gradient(135deg, var(--gray-300) 0%, var(--gray-100) 100%);
   position: relative;
   overflow: hidden;
-  min-height: 60vh;
+  min-height: 48vh;
 }
 
 #teaser h1 {
-  color: #2d3748;
+  color: var(--dark-blue);
   width: 100%;
   font-weight: 700;
   display: block;
@@ -501,17 +553,17 @@ main {
 
 .teaser-card {
   padding: 4rem 2rem;
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
+  background-color: var(--white);
+  border: 1px solid var(--gray-200);
   box-shadow: var(--shadow-md);
   transition: box-shadow 0.2s ease;
 
   h2 {
-    color: #2d3748;
+    color: var(--dark-blue);
   }
 
   p {
-    color: #4a5568;
+    color: var(--medium-gray);
   }
 }
 
@@ -520,11 +572,11 @@ main {
 }
 
 #platform {
-  background-color: #0a0a0a;
+  background-color: var(--dark-bg);
   box-shadow: var(--shadow-lg);
 
   h2 {
-    color: #c0c0c0;
+    color: var(--light-text);
     font-size: var(--font-size-3xl);
     font-weight: 600;
     line-height: 1.2;
@@ -532,7 +584,7 @@ main {
   }
 
   p {
-    color: #f5f5f5;
+    color: var(--very-light-gray);
     font-size: var(--font-size-lg);
     line-height: 1.7;
     font-weight: 400;
@@ -575,7 +627,7 @@ main {
 }
 
 .teaser-card p.text-large {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-2xl);
   line-height: 1.6;
   font-weight: 400;
   color: var(--gray-600);
@@ -599,7 +651,7 @@ main {
   }
   
   .teaser-card p.text-large {
-    font-size: 1.8rem;
+    font-size: var(--font-size-2xl);
     max-width: 100%;
   }
 }
@@ -614,12 +666,12 @@ main {
   }
   
   .teaser-card h2 {
-    font-size: 2rem;
+    font-size: var(--font-size-2);
     margin-bottom: 1.5rem;
   }
   
   .teaser-card p.text-large {
-    font-size: 1.6rem;
+    font-size: var(--font-size-large);
     line-height: 1.4;
   }
 }
@@ -724,7 +776,7 @@ a {
 
   header {
     grid-template-columns: 1fr;
-    font-size: 0.95rem;
+    font-size: var(--font-size-mobile);
     padding-top: 1rem;
     padding-bottom: 1rem;
     height: 3.5rem;
@@ -787,7 +839,7 @@ a {
   }
 
   #teaser h1 {
-    font-size: var(--font-size-4xl);  /* 36px on mobile - smaller but still impactful */
+    font-size: var(--font-size-4xl);
     padding: 2rem 1rem 2rem 1rem;
     width: 100%;
     line-height: 1.1;
@@ -800,34 +852,34 @@ a {
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: var(--font-size-2);
   }
 
   h3 {
-    font-size: 1.75rem;
+    font-size: var(--font-size-1-75);
   }
 
   footer .inner {
     flex-direction: column;
     align-items: center;
     padding: 2rem 0.5rem;
-    font-size: 0.95em;
+    font-size: var(--font-size-mobile);
   }
 }
 
 /* Extra small screens */
 @media (max-width: 400px) {
   #teaser h1 {
-    font-size: var(--font-size-3xl);  /* 30px - Smaller for very small screens but still prominent */
+    font-size: var(--font-size-3xl);
     padding: 1.5rem 1rem 2rem 1rem;
   }
   
   .teaser-card h2 {
-    font-size: var(--font-size-2xl);  /* 24px - Consistent with other breakpoint */
+    font-size: var(--font-size-2xl);
   }
   
   .teaser-card p.text-large {
-    font-size: var(--font-size-base);  /* 16px - Standard readable size */
+    font-size: var(--font-size-base);
   }
 }
 
@@ -882,7 +934,7 @@ a {
     margin: 0;
     padding: 0;
   }
-
+  
   #main-nav {
     padding: 0;
     display: none;
@@ -892,6 +944,7 @@ a {
     left: 0;
     right: 0;
     width: 100%;
+    min-height: 100vh;
     background-color: var(--white);
     border: 1px solid var(--gray-200);
     box-shadow: var(--shadow-xl);
@@ -902,11 +955,11 @@ a {
 
   #main-nav.open {
     display: flex;
-    background-color: white;
+    background-color: var(--white);
   }
 
   #main-nav.open li {
-    background-color: white;
+    background-color: var(--white);
     padding: 0;
     margin: 0;
     width: 100%;
@@ -919,8 +972,8 @@ a {
     width: 100%;
     padding: 1rem 1.5rem;
     margin: 0;
-    background-color: white;
-    color: rgb(37, 37, 37);
+    background-color: var(--white);
+    color: var(--mobile-nav-text);
     transition: all 0.2s ease;
     opacity: 1 !important;
   }
@@ -933,7 +986,7 @@ a {
   #main-nav li {
     width: 100%;
     padding: 0.5rem 0;
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     text-align: left;
     display: block !important;
     opacity: 1 !important;
@@ -963,36 +1016,36 @@ a {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background: #ffffff;
+  background: var(--white);
   padding: 2rem 1.5rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-form);
   margin-top: 1rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--gray-200);
 }
 
 #contact-form label {
   font-weight: 500;
   margin-bottom: 0.25rem;
-  color: #4a5568;
+  color: var(--medium-gray);
 }
 
 #contact-form input,
 #contact-form textarea {
   padding: 0.75rem 1rem;
-  border: 1px solid #cbd5e0;
-  font-size: 1rem;
+  border: 1px solid var(--gray-300);
+  font-size: var(--font-size-base);
   font-family: inherit;
-  background: #f7fafc;
-  color: #2d3748;
+  background: var(--light-blue-bg);
+  color: var(--dark-blue);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 #contact-form input:focus,
 #contact-form textarea:focus {
   outline: none;
-  border-color: #3a86ff;
-  background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  border-color: var(--blue-400);
+  background: var(--white);
+  box-shadow: var(--focus-ring);
 }
 
 #contact-form textarea {
@@ -1005,7 +1058,7 @@ a {
   color: var(--white);
   border: none;
   padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -1029,18 +1082,18 @@ a {
   }
 
   #contact-form label {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     margin-bottom: 0.5rem;
   }
 
   #contact-form input,
   #contact-form textarea {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     padding: 0.75rem;
   }
 
   #contact-form button[type="submit"] {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     padding: 0.875rem 1.5rem;
   }
 }
@@ -1062,7 +1115,7 @@ a {
   margin-top: 1rem;
   margin-bottom: 0;
   font-size: 1.125rem;
-  color: #6b7280;
+  color: var(--gray-500);
   max-width: 68ch;
   margin-left: auto;
   margin-right: auto;
