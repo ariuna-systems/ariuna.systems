@@ -184,7 +184,7 @@ a:hover {
   
   h4 {
     color: var(--light-gray);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -311,9 +311,9 @@ nav li {
   border: none;
   box-shadow: none;
   transition: all 0.2s ease;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: static;
+  margin-left: auto; /* push nav to the right */
+  transform: none;
 }
 
 #main-nav li {
@@ -376,7 +376,6 @@ section#platform {
     color: var(--near-white);
     font-size: var(--font-size-2xl);
   }
-
 }
 
 section#solutions {
@@ -416,28 +415,28 @@ section#solutions {
 
   .solution-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 1.6rem;
   }
 }
 
-section#technology {
+section#projects {
   width: 100%;
 
-  .technology-cards {
+  .projects-cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1.6rem;
   }
 
-  .technology-tile {
+  .projects-tile {
     background-color: var(--tech-green);
     padding: 2rem;
     box-shadow: var(--shadow-light);
     transition: all 0.3s ease-in-out;
   }
 
-  .technology-tile h3 {
+  .projects-tile h3 {
     margin-bottom: 1rem;
     margin-top: 0;
   }
@@ -572,7 +571,9 @@ main {
 }
 
 #platform {
-  background-color: var(--dark-bg);
+  /* background-color: var(--dark-bg); */
+  background: linear-gradient(150deg, #2d2f36 0%, #5f606b 50%, #585c69 100%);
+
   box-shadow: var(--shadow-lg);
 
   h2 {
@@ -745,7 +746,7 @@ a {
     grid-template-columns: 1fr 1fr;
   }
 
-  section#technology .technology-cards {
+  section#projects .projects-cards {
     grid-template-columns: 1fr;
   }
 
@@ -832,7 +833,7 @@ a {
   }
 
   .solution,
-  .technology-tile,
+  .projects-tile,
   .resource-tile {
     padding: 1rem;
     font-size: 1.1rem;
@@ -1106,9 +1107,13 @@ a {
 
 /* Teaser / Hero */
 #teaser {
+  display: flex;
+  align-items: center; /* vertical center */
+  justify-content: center; /* horizontal center */
   padding-top: 6rem;
   padding-bottom: 6rem;
   text-align: center;
+  min-height: 48vh; /* preserve previous sizing */
 }
 
 .teaser-subtitle {
