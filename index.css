@@ -1,10 +1,10 @@
 /** 
  * Ariuna Systems CSS
- * Version: 1.0.0
+ * Version: 1.1.0
  */
 :root {
   /* Project Version */
-  --project-version: "1.0.0";
+  --project-version: "1.1.0";
   
   /* Modern Color Palette */
   --primary-blue: #2563eb;
@@ -526,14 +526,14 @@ main {
 #teaser {
   text-align: left;
   padding: 8rem 0 4rem 0;
-  background: linear-gradient(135deg, var(--gray-300) 0%, var(--gray-100) 100%);
+  background: linear-gradient(135deg, #e5e7eb 0%, #ffffff 100%);
   position: relative;
   overflow: hidden;
   min-height: 48vh;
 }
 
 #teaser h1 {
-  color: var(--dark-blue);
+  color: var(--gray-900);
   width: 100%;
   font-weight: 700;
   display: block;
@@ -572,7 +572,7 @@ main {
 
 #platform {
   /* background-color: var(--dark-bg); */
-  background: linear-gradient(150deg, #2d2f36 0%, #5f606b 50%, #585c69 100%);
+  background: linear-gradient(150deg, #2a2d35 0%, #3a3f4a 50%, #282c36 100%);
 
   box-shadow: var(--shadow-lg);
 
@@ -1120,7 +1120,7 @@ a {
   margin-top: 1rem;
   margin-bottom: 0;
   font-size: 1.125rem;
-  color: var(--gray-500);
+  color: var(--gray-600);
   max-width: 68ch;
   margin-left: auto;
   margin-right: auto;
