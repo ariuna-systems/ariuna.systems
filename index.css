@@ -353,8 +353,7 @@ nav #logo {
 /* Sections */
 section {
   width: 100%;
-  padding: 4rem 0;
-
+  padding: 0;
   h2 {
     font-size: var(--font-size-3xl);
     font-weight: 600;
@@ -844,7 +843,7 @@ a {
     padding: 2rem 1rem 2rem 1rem;
     width: 100%;
     line-height: 1.1;
-    color: var(--gray-900);
+    color: var(--white);
   }
 
   /* Adjust background for mobile */
@@ -873,6 +872,7 @@ a {
   #teaser h1 {
     font-size: var(--font-size-3xl);
     padding: 1.5rem 1rem 2rem 1rem;
+    color: var(--white);
   }
   
   .teaser-card h2 {
@@ -1129,9 +1129,8 @@ a {
 
 .ukraine-support {
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0.5rem;
+  right: 1.5rem;
   font-size: var(--font-size-sm);
   color: var(--gray-200);
   text-align: center;
@@ -1141,9 +1140,7 @@ a {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  padding: 0.5rem;
   margin: 0;
 }
 
