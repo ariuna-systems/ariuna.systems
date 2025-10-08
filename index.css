@@ -156,11 +156,13 @@ h1,
 h2,
 h3,
 h4 {
-  color: var(--dark-blue);
+  color: var(--gray-700);
   font-family: "Lato", sans-serif;
   margin: 0;
   line-height: 1.2;
 }
+
+h3 {margin: 2rem 0; color: var(--gray-700)}
 
 p {
   font-size: var(--font-size-base);
@@ -402,7 +404,7 @@ section#solutions {
     transition: all 0.2s ease;
   }
 
-  .solution h3 {
+  .solution h4 {
     margin-bottom: 1rem;
     margin-top: 0;
   }
@@ -416,6 +418,18 @@ section#solutions {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.6rem;
+  }
+
+  /* Industry cards styling */
+  .solution-industries-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+    margin-top: 2rem;
+  }
+
+  .solution-industries-cards .solution {
+    background-color: var(--gray-100);
   }
 }
 
@@ -707,8 +721,10 @@ a {
 
 #solutions h2,
 #platform h2,
+#projects h2,
 #company-title {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  margin-top: 1rem;
 }
 
 /* Flexbox Utilities */
