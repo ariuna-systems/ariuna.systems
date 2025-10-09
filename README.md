@@ -14,5 +14,3 @@ All content is served as static files (HTML, CSS, JS, images) and does not requi
 - `index.css` — Stylesheet
 - `index.js` — JavaScript functionality
 - `assets/` — Images and icons
-
-Feel free to explore or contribute improvements!
