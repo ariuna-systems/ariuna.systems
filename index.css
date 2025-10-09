@@ -468,10 +468,14 @@ section#solutions {
     grid-template-columns: 1fr 1fr;
     gap: 1.6rem;
     margin-top: 2rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .solution-industries-cards .solution {
     background-color: var(--gray-100);
+    width: 100%;
+    box-sizing: border-box;
   }
 
   /* Training cards styling */
@@ -714,7 +718,9 @@ main {
   background: linear-gradient(135deg, #1a1d24 0%, #2d3142 100%);
   position: relative;
   overflow: hidden;
-  min-height: 48vh;
+  min-height: 56.25vw; /* 16:9 aspect ratio for future video */
+  max-height: 100vh; /* Don't exceed viewport height */
+  aspect-ratio: 16 / 9;
 }
 
 #teaser h1 {
@@ -913,8 +919,22 @@ a {
   box-sizing: border-box;
 }
 
+/* Tablet breakpoint - make industries cards single column earlier */
+@media (max-width: 1024px) {
+  .solution-industries-cards {
+    grid-template-columns: 1fr !important;
+    gap: 1.4rem;
+  }
+}
 
 @media (max-width: 900px) {
+  /* Reset teaser aspect ratio on tablet/mobile */
+  #teaser {
+    aspect-ratio: auto;
+    min-height: auto;
+    max-height: none;
+  }
+
   h1 {
     font-size: var(--font-size-4xl);
   }
@@ -931,18 +951,36 @@ a {
 
   section#solutions .solution-cards {
     grid-template-columns: 1fr 1fr;
+    gap: 1.4rem;
+  }
+
+  .solution-industries-cards {
+    grid-template-columns: 1fr !important;
+    gap: 1.4rem;
+  }
+
+  .solution-industries-cards .solution {
+    width: 100%;
+    max-width: 100%;
   }
 
   section#technology .technology-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.4rem;
   }
 
   section#consulting .solution-consulting-cards {
     grid-template-columns: 1fr 1fr;
+    gap: 1.4rem;
   }
 
   .company-cards {
     grid-template-columns: 1fr;
+  }
+
+  .solution,
+  .technology-tile {
+    padding: 1.75rem;
   }
 
   #container {
@@ -953,17 +991,34 @@ a {
 
 
 @media (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
+
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   #container {
     grid-template-columns: 1fr;
     padding: 0;
-    max-width: 100vw;
-    width: 100vw;
+    max-width: 100%;
+    width: 100%;
     margin: 0;
+    overflow-x: hidden;
+  }
+
+  section {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
   }
 
   header {
@@ -1004,18 +1059,38 @@ a {
 
   section#solutions .solution-cards {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
 
   .solution-industries-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 1.2rem;
+  }
+
+  .solution-industries-cards .solution {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .solution-training-cards {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  section#technology .technology-cards {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  section#consulting .solution-consulting-cards {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
 
   .solution-consulting-cards {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
 
   .teaser-cards {
@@ -1038,16 +1113,41 @@ a {
   .solution,
   .technology-tile,
   .resource-tile {
-    padding: 1rem;
-    font-size: 1.1rem;
+    padding: 1.5rem;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .solution h4,
+  .technology-tile h3 {
+    font-size: var(--font-size-xl);
+    margin-bottom: 1rem;
+  }
+
+  .solution p,
+  .technology-tile p {
+    font-size: var(--font-size-base);
+    line-height: 1.6;
   }
 
   #teaser h1 {
     font-size: var(--font-size-4xl);
-    padding: 2rem 1rem 2rem 1rem;
+    padding: 1rem 1rem 1rem 1rem;
     width: 100%;
     line-height: 1.1;
     color: var(--white);
+  }
+
+  #teaser .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 7rem); /* Full height minus header and padding */
+    min-height: calc(100dvh - 7rem);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 
   /* Adjust background for mobile */
@@ -1057,10 +1157,48 @@ a {
 
   h2 {
     font-size: var(--font-size-2);
+    margin-bottom: 2rem;
   }
 
   h3 {
     font-size: var(--font-size-1-75);
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  #teaser {
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3.5rem; /* Account for fixed header */
+  }
+
+  section#teaser {
+    padding-top: 3.5rem; /* Start below fixed header */
+    padding-bottom: 2rem;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .teaser-subtitle {
+    font-size: var(--font-size-sm);
+    margin-top: 0.75rem;
+  }
+
+  section#solutions,
+  section#platform,
+  section#technology,
+  section#consulting,
+  section#company {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .section-intro {
+    font-size: var(--font-size-lg);
+    margin-bottom: 2rem;
   }
 
   footer {
@@ -1096,10 +1234,35 @@ a {
 
 /* Extra small screens */
 @media (max-width: 400px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  #teaser {
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-top: 3.5rem;
+  }
+
   #teaser h1 {
     font-size: var(--font-size-3xl);
-    padding: 1.5rem 1rem 2rem 1rem;
+    padding: 0.5rem 0.75rem 0.5rem 0.75rem;
     color: var(--white);
+  }
+
+  #teaser .container {
+    min-height: calc(100vh - 7rem);
+    min-height: calc(100dvh - 7rem);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .teaser-subtitle {
+    font-size: var(--font-size-xs);
+    margin-top: 0.5rem;
   }
   
   .teaser-card h2 {
@@ -1108,6 +1271,21 @@ a {
   
   .teaser-card p.text-large {
     font-size: var(--font-size-base);
+  }
+
+  .solution,
+  .technology-tile {
+    padding: 1.25rem;
+  }
+
+  h2 {
+    font-size: var(--font-size-xl);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-intro {
+    font-size: var(--font-size-base);
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -1340,7 +1518,9 @@ a {
   padding-top: 6rem;
   padding-bottom: 6rem;
   text-align: center;
-  min-height: 48vh; /* preserve previous sizing */
+  min-height: 56.25vw; /* 16:9 aspect ratio (9/16 = 0.5625) for future video */
+  max-height: 100vh; /* Don't exceed viewport height */
+  aspect-ratio: 16 / 9;
 }
 
 .teaser-subtitle {
