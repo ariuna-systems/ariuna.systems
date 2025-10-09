@@ -552,13 +552,13 @@ section#consulting {
   }
 
   .solution {
-    background-color: var(--solution-blue);
     padding: 2rem;
     border: 1px solid var(--gray-200);
     box-shadow: var(--shadow-light);
     transition: all 0.2s ease;
+    /* border-left: 1px solid black; */
   }
-
+  
   .solution h4 {
     margin-bottom: 1rem;
     margin-top: 0;
