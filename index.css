@@ -46,6 +46,8 @@
   --focus-ring: 0 0 0 3px rgba(37, 99, 235, 0.1);
   --nav-text: rgba(255, 255, 255, 0.9);
   --nav-text-hover: rgba(255, 255, 255, 1);
+  --nav-text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --nav-toggle-bg: rgba(255, 255, 255, 0.95);
   --mobile-nav-text: rgb(37, 37, 37);
 
   /* Modern Shadows */
@@ -216,7 +218,9 @@ p.section-intro {
   font-weight: 400;
 }
 
-/* Header */
+/* Header - Semi-transparent sticky header with glassmorphism effect
+   Link colors are dynamically adjusted via JavaScript based on the 
+   background color of sections scrolling underneath */
 header {
   box-sizing: border-box;
   position: fixed;
@@ -277,23 +281,39 @@ nav ul,
   gap: 0.25rem;
 }
 
+/* Navigation links - colors dynamically set by JavaScript based on background */
 nav a {
   display: inline-block;
   text-decoration: none;
   color: var(--nav-text);
   font-weight: 500;
-  transition: color 0.2s ease;
+  text-shadow: var(--nav-text-shadow);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 nav a:hover {
-  color: var(--nav-text-hover);
+  opacity: 1 !important;
+  filter: brightness(1.2);
 }
 
 #home a {
   padding: 0 0.2rem;
   font-size: var(--font-size-1-2);
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--nav-text);
+  text-shadow: var(--nav-text-shadow);
   font-weight: 600;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+#name {
+  color: var(--nav-text);
+  text-shadow: var(--nav-text-shadow);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+#name:hover {
+  opacity: 1 !important;
+  filter: brightness(1.2);
 }
 
 nav li {
@@ -324,16 +344,18 @@ nav li {
 }
 
 #main-nav li a {
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--nav-text);
   font-weight: 500;
   padding: 0.5rem 0;
   border-radius: 0;
-  transition: all 0.2s ease;
+  text-shadow: var(--nav-text-shadow);
+  transition: color 0.3s ease, text-shadow 0.3s ease, background-color 0.2s ease;
 }
 
 #main-nav li a:hover {
   background-color: transparent;
-  color: rgba(255, 255, 255, 1);
+  opacity: 1 !important;
+  filter: brightness(1.2);
 }
 
 nav #logo {
@@ -1316,8 +1338,8 @@ a {
   display: block;
   width: 1.5rem;
   height: 2px;
-  background: #4a5568;
-  transition: 0.2s ease;
+  background: var(--nav-toggle-bg);
+  transition: background 0.3s ease, transform 0.2s ease;
   margin: 0 auto;
 }
 
