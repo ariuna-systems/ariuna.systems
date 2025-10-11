@@ -435,11 +435,11 @@ nav #logo {
   display: inline-block;
   width: 1.8rem;
   height: 1.8rem;
-  background-image: url('assets/logo.webp');
+  background-image: url('assets/logo-white.png');
   background-size: 1.8rem 1.8rem;
   background-repeat: no-repeat;
   background-position: center;
-  transition: background-image 0.3s ease;
+  transition: background-image 0.2s ease;
   vertical-align: middle;
 }
 
@@ -1194,7 +1194,7 @@ a {
   }
 
   .customer-cards {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1.4rem;
   }
 
@@ -1217,6 +1217,11 @@ a {
 @media (max-width: 600px) {
   body {
     overflow-x: hidden;
+  }
+
+  .customer-cards {
+    grid-template-columns: 1fr !important;
+    gap: 1.2rem;
   }
 
   .container {
@@ -1993,6 +1998,11 @@ section#teaser {
 
 /* Mobile responsiveness for modal */
 @media (max-width: 768px) {
+  .customer-cards {
+    grid-template-columns: 1fr !important;
+    gap: 1.2rem;
+  }
+  
   .modal-content {
     padding: 2rem;
     margin: 1rem;
