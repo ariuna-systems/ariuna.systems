@@ -4,6 +4,42 @@
  */
 
 /**
+ * Animates the rotating text in the teaser section
+ * Cycles through "Strategical", "Operational", and "Tactical"
+ */
+function initTextAnimation() {
+  const animatedText = document.getElementById('animated-text');
+  if (!animatedText) return;
+  
+  const words = ['Strategical', 'Operational', 'Tactical'];
+  let currentIndex = 1; // Start with "Operational" (index 1)
+  
+  function rotateText() {
+    // Fade out with slide up effect
+    animatedText.classList.add('fade-out');
+    animatedText.classList.remove('fade-in');
+    
+    setTimeout(() => {
+      // Change text after fade out completes
+      currentIndex = (currentIndex + 1) % words.length;
+      animatedText.textContent = words[currentIndex];
+      
+      // Fade in with slide down effect
+      animatedText.classList.remove('fade-out');
+      animatedText.classList.add('fade-in');
+      
+      // Clean up fade-in class after animation
+      setTimeout(() => {
+        animatedText.classList.remove('fade-in');
+      }, 800);
+    }, 400); // Wait for fade out to complete (half of 0.8s transition)
+  }
+  
+  // Start the rotation cycle
+  setInterval(rotateText, 3500); // Change every 3.5 seconds to accommodate longer transition
+}
+
+/**
  * Dynamically adjusts header link colors based on the background of the section
  * currently scrolling behind the semi-transparent sticky header.
  * Dark sections get white text, light sections get dark text for optimal contrast.
@@ -74,6 +110,20 @@ function initDynamicHeaderColor() {
         // Update hamburger menu icon color (for mobile)
         document.documentElement.style.setProperty('--nav-toggle-bg', 'rgba(255, 255, 255, 0.95)');
         
+        // Switch to white logo for dark background
+        const logoIcon = document.querySelector('.logo-icon');
+        if (logoIcon) {
+          logoIcon.classList.remove('logo-dark');
+          logoIcon.classList.add('logo-white');
+        }
+        
+        // Update contact button border color for dark background
+        const contactBtn = document.querySelector('.contact-btn');
+        if (contactBtn) {
+          contactBtn.style.borderColor = 'rgba(255, 255, 255, 0.95)';
+          contactBtn.style.color = 'rgba(255, 255, 255, 0.95)';
+        }
+        
         header.setAttribute('data-bg-mode', 'dark');
       } else {
         // Light background → Dark text
@@ -93,6 +143,20 @@ function initDynamicHeaderColor() {
         
         // Update hamburger menu icon color (for mobile)
         document.documentElement.style.setProperty('--nav-toggle-bg', 'rgba(37, 37, 37, 0.9)');
+        
+        // Switch to dark logo for light background
+        const logoIcon = document.querySelector('.logo-icon');
+        if (logoIcon) {
+          logoIcon.classList.remove('logo-white');
+          logoIcon.classList.add('logo-dark');
+        }
+        
+        // Update contact button border color for light background
+        const contactBtn = document.querySelector('.contact-btn');
+        if (contactBtn) {
+          contactBtn.style.borderColor = 'rgba(37, 37, 37, 0.9)';
+          contactBtn.style.color = 'rgba(37, 37, 37, 0.9)';
+        }
         
         header.setAttribute('data-bg-mode', 'light');
       }
@@ -129,6 +193,9 @@ let updateHeaderColorGlobal = null;
 
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize text animation
+  initTextAnimation();
+  
   const navToggle = document.getElementById("nav-toggle");
   const mainNav = document.getElementById("main-nav");
 
@@ -137,6 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const isOpen = mainNav.classList.toggle("open");
       navToggle.classList.toggle("open", isOpen);
       navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      mainNav.setAttribute("aria-hidden", isOpen ? "false" : "true");
       
       // Reapply header colors after menu state changes
       if (updateHeaderColorGlobal) {
@@ -147,6 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
       navToggle.classList.remove("open");
       mainNav.classList.remove("open");
       navToggle.setAttribute("aria-expanded", "false");
+      mainNav.setAttribute("aria-hidden", "true");
       
       // Reapply header colors after menu closes
       if (updateHeaderColorGlobal) {
@@ -157,6 +226,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Dynamic header text color - adjust based on what's scrolling behind the semi-transparent header
   initDynamicHeaderColor();
+});
+
+// Contact Modal functionality
+document.addEventListener('DOMContentLoaded', () => {
+  const contactBtn = document.getElementById('contact-btn');
+  const modal = document.getElementById('contact-modal');
+  const modalClose = modal?.querySelector('.modal-close');
+  
+  if (contactBtn && modal) {
+    // Open modal when contact button is clicked
+    contactBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden', 'false');
+      // Focus management for accessibility
+      modalClose?.focus();
+      // Prevent body scrolling when modal is open
+      document.body.style.overflow = 'hidden';
+    });
+    
+    // Close modal when close button is clicked
+    modalClose?.addEventListener('click', closeModal);
+    
+    // Close modal when clicking outside the modal content
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('show')) {
+        closeModal();
+      }
+    });
+    
+    function closeModal() {
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden', 'true');
+      // Restore body scrolling
+      document.body.style.overflow = '';
+      // Return focus to contact button
+      contactBtn.focus();
+    }
+  }
 });
 
 // Rest of the code (copyright year, contact form, theme toggle)

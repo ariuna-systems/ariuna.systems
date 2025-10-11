@@ -5,8 +5,23 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="Arjuna Systems: Operational & Tactical Intelligence" />
-  <meta name="version" content="2.0.0" />
+
+  <!-- Open Graph meta tags -->
+  <meta property="og:title" content="Ariuna Systems - Operational & Tactical Intelligence">
+  <meta property="og:description"
+    content="Real-time situational awareness platform for critical operations. DECIDE FASTER — OPERATE BETTER">
+  <meta property="og:image" content="assets/hero.png">
+  <meta property="og:url" content="https://ariuna.systems">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card meta tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ariuna Systems - Operational & Tactical Intelligence">
+  <meta name="twitter:description" content="Real-time situational awareness platform for critical operations">
+  <meta name="twitter:image" content="assets/hero.png">
+
   <title>Ariuna Systems</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
   <link rel="stylesheet" href="index.css" />
   <script type="module" src="index.js" defer></script>
 
@@ -18,23 +33,26 @@
 </head>
 
 <body data-theme="light">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <header>
     <nav aria-label="Main navigation">
-      <div id="home">
-        <a id="logo" href="#teaser" aria-label="Arjuna Systems Home">
-          <span class="logo-icon"></span>
-        </a>
-        <a id="name" href="#teaser">ariuna</a>
+      <div class="nav-left">
+        <div id="home">
+          <a id="logo" href="" aria-label=" Arjuna Systems Home">
+            <span class="logo-icon"></span>
+          </a>
+          <a id="name" href="">ariuna</a>
+        </div>
       </div>
-      <ul id="main-nav">
+      <ul id="main-nav" aria-hidden="true">
         <li><a href="#solutions">Solutions</a></li>
+        <li><a href="#services">Services</a></li>
         <li><a href="#platform">Platform</a></li>
-        <li><a href="#consulting">Consulting</a></li>
-        <li><a href="#technology">Technology</a></li>
         <li><a href="#company">Company</a></li>
       </ul>
       <div class="header-controls">
-        <button id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <button id="contact-btn" class="contact-btn">Contact</button>
+        <button id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
           <span></span>
           <span></span>
           <span></span>
@@ -43,17 +61,17 @@
     </nav>
   </header>
 
-  <main role="main">
+  <main id="main-content" role="main">
     <section id="teaser">
-      <div class="container">
-        <h1>Operational & Tactical Intelligence</h1>
-        <p class="teaser-subtitle">DECIDE FASTER &mdash; OPERATE BETTER</p>
+      <video autoplay muted loop playsinline id="background-video">
+        <!-- <source src="assets/teaser.mp4" type="video/mp4"> -->
+        <!-- <source src="assets/teaser.webm" type="video/webm"> -->
+        Your browser does not support the video tag.
+      </video>
+      <div class="teaser-content">
+        <h1>Operational Intelligence Platform</h1>
       </div>
       <p class="ukraine-support">
-        <svg class="ukraine-flag" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="24" height="8" fill="#0057B7" />
-          <rect y="8" width="24" height="8" fill="#FFD700" />
-        </svg>
         We stand with Ukraine
       </p>
     </section>
@@ -63,44 +81,38 @@
         <h2 id="solutions-title">Solutions</h2>
 
         <p class="section-intro">
-          We accelerate digital transformation through real-time technologies and domain expertise,
-          delivering competitive advantage by transforming complex data into actionable
-          insights.
+          We help organizations maintain operational control in complex environments through intelligent automation and
+          real-time insights. Our customers gain competitive advantage by transforming data into decisive action.
         </p>
         <h3>Capabilities</h3>
 
         <div class="solution-cards">
           <div class="solution">
-            <h4>Situational Awareness</h4>
+            <h4>Operational Intelligence</h4>
             <p>
-              Gain real-time visibility into critical assets and operations to detect anomalies, predict outcomes, and
-              respond rapidly. Our platform fuses multiple data streams into actionable intelligence, enabling confident
-              decision-making in dynamic environments.
+              Real-time visibility across all operations with automated threat and anomaly detection. Multi-source
+              intelligence fusion provides comprehensive operational awareness for confident decision-making.
             </p>
           </div>
           <div class="solution">
-            <h4>Digital Transformation</h4>
+            <h4>Command & Control</h4>
             <p>
-              Accelerate cloud adoption with infrastructure-as-code, automated CI/CD, and built-in
-              security. We design cost-optimized, resilient platforms using containers, serverless patterns, and
-              managed services so your team ships reliably.
-            </p>
-          </div>
-
-          <div class="solution">
-            <h4>Ingestion & Processing</h4>
-            <p>
-              Ingest and process massive event streams with low-latency pipelines built for scale and reliability.
-              Our engine handles millions of events per second, enabling unified operations and instant automated
-              responses.
+              Centralized oversight with automated response coordination. Monitor, control, and orchestrate critical
+              operations from a unified platform with complete audit trails and compliance reporting.
             </p>
           </div>
           <div class="solution">
-            <h4>Analytics & Dashboards</h4>
+            <h4>High-Performance Processing</h4>
             <p>
-              Turn streamed data into actionable intelligence with customizable dashboards, KPIs, and drill-down
-              analytics. Empower teams to monitor SLOs and act on insights with clear visualizations and exportable
-              reports.
+              Process massive data volumes in real-time with enterprise-grade reliability. Scalable infrastructure
+              handles millions of transactions per second, ensuring immediate response to critical events.
+            </p>
+          </div>
+          <div class="solution">
+            <h4>Advanced Analytics</h4>
+            <p>
+              Transform operational data into strategic intelligence with predictive analytics and custom dashboards.
+              Machine learning insights drive optimization and competitive advantage.
             </p>
           </div>
         </div>
@@ -109,60 +121,48 @@
 
         <div class="solution-industries-cards">
           <div class="solution">
-            <h4>Energy & Utilities</h4>
+            <h4>Defense & Government</h4>
             <p>
-              Real-time monitoring of grid performance, renewable generation, and infrastructure health. Optimize
-              operations, predict maintenance needs, and enhance safety across power networks.
+              Mission-critical intelligence fusion and threat detection for national security operations. Multi-domain
+              data streams provide enhanced situational awareness and strategic decision support.
             </p>
           </div>
           <div class="solution">
-            <h4>Defense & Intelligence</h4>
+            <h4>Energy & Critical Infrastructure</h4>
             <p>
-              Unified intelligence fusion and threat detection for mission-critical operations. Multi-domain data
-              streams provide enhanced situational awareness and strategic decision support.
+              Real-time monitoring of grid performance, renewable generation, and infrastructure security. Optimize
+              operations, predict maintenance needs, and ensure continuity across power networks.
             </p>
           </div>
           <div class="solution">
-            <h4>Manufacturing & Industry</h4>
+            <h4>Manufacturing & Operations</h4>
             <p>
-              Continuous monitoring of production, equipment health, and environmental conditions. Predictive
-              maintenance, quality control, and supply chain optimization reduce downtime and maximize efficiency.
+              Continuous monitoring of production, equipment health, and supply chain performance. Predictive
+              maintenance, quality optimization, and operational efficiency reduce costs and maximize output.
             </p>
           </div>
           <div class="solution">
-            <h4>Logistics & Supply Chain</h4>
+            <h4>Financial Services</h4>
             <p>
-              End-to-end visibility across transportation, warehousing, and distribution networks. Real-time tracking,
-              route optimization, and demand forecasting improve delivery performance and reduce costs.
+              Real-time risk monitoring, fraud detection, and regulatory compliance across trading and operations.
+              Advanced analytics ensure market advantage while maintaining security and compliance.
             </p>
           </div>
         </div>
+
+
       </div>
     </section>
 
-
-    <section id="platform" class="scroll-anchor" aria-labelledby="platform-title">
+    <section id="services" class="scroll-anchor" aria-labelledby="services-title">
       <div class="container">
-        <h2 id="platform-title">Platform</h2>
-        <p class="section-intro">
-          Our situational awareness platform fuses data and intelligence to transform uncertainty into decisive action
-          across physical and digital domains. We help organizations understand and respond to complex environments with
-          enhanced clarity and operational readiness.
-        </p>
-
-        <img src="assets/platform01.png" width="100%" />
-      </div>
-    </section>
-
-    <section id="consulting" class="scroll-anchor" aria-labelledby="consulting-title">
-      <div class="container">
-        <h2 id="consulting-title">Consulting</h2>
+        <h2 id="services-title">Services</h2>
         <p class="section-intro">
           We help organizations build high-performing analytics and intelligence teams through tailored training,
           platform integration expertise, and direct access to domain specialists in critical sectors.
         </p>
 
-        <div class="solution-consulting-cards">
+        <div class="solution-services-cards">
           <div class="solution">
             <h4>Python Analytics Training</h4>
             <p>
@@ -188,6 +188,41 @@
             </p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="customers" class="scroll-anchor" aria-labelledby="customers-title">
+      <div class="container">
+        <h2 id="customers-title">Customers & Partners</h2>
+        <p class="section-intro">
+          We partner with forward-thinking organizations across critical industries to deliver operational excellence
+          and tactical intelligence solutions.
+        </p>
+
+        <div class="customer-cards">
+          <div class="customer">
+            <h4><a href="https://www.kasi.cz/">KASI Foundry a.s</a></h4>
+          </div>
+          <div class="customer">
+            <h4><a href="https://www.issk.sk/">IS - Industry Solutions, a.s.</a></h4>
+          </div>
+          <div class="customer">
+            <h4><a href="https://www.hospitalanalytics.cz/">Advance Hospital Analytics, s.r.o.</a></h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="platform" class="scroll-anchor" aria-labelledby="platform-title">
+      <div class="container">
+        <h2 id="platform-title">Platform</h2>
+        <p class="section-intro">
+          Our situational awareness platform fuses data and intelligence to transform uncertainty into decisive action
+          across physical and digital domains.
+        </p>
+
+        <img src="assets/platform01.png" width="100%"
+          alt="Ariuna Systems platform architecture diagram showing data flow and processing components" />
       </div>
     </section>
 
@@ -231,7 +266,7 @@
         <h2 id="company-title">Company</h2>
         <div class="company-cards">
           <p class="section-intro">
-            We are a European startup delivering a real-time situational awareness and decision-making platform.
+            We are a European startup delivering a situational awareness and decision-making platform.
           </p>
           <p>
             Reach out to us for inquiries or support:
@@ -252,7 +287,8 @@
           <h4>Arjuna Systems Group s.r.o.</h4>
           <p>
             <strong>IČ:</strong> 23020539<br />
-            <strong>DIČ:</strong> CZ23020539
+            <strong>DIČ:</strong> CZ23020539<br />
+            <strong>Bank account:</strong>353884200/0300
           </p>
           <p>
             Registered at Regional Court in Ústí nad Labem,<br />
@@ -266,11 +302,26 @@
           </p>
         </div>
         <div id="copyright">
-          &copy; <span id="copyright-year"></span> Ariuna Systems
+          &copy; <span id="copyright-year"></span> ARIUNA SYSTEMS
         </div>
       </div>
     </div>
   </footer>
+
+  <div id="contact-modal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-labelledby="contact-modal-title"
+      aria-describedby="contact-modal-description">
+      <button class="modal-close" aria-label="Close contact modal">&times;</button>
+      <h2 id="contact-modal-title">Contact</h2>
+      <div id="contact-modal-description" class="contact-info">
+        <div class="contact-details">
+          <p><strong>Email:</strong> <a href="mailto:office@arjuna.group">office@arjuna.group</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+420607479148">+420 607 479 148</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 
 </body>
 
