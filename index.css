@@ -509,7 +509,6 @@ section#platform {
 
   img {
     margin-top: 2rem;
-    border-radius: 8px;
     box-shadow: var(--shadow-lg);
   }
 }
