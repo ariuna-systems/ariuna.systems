@@ -50,55 +50,140 @@ function initDynamicHeaderColor() {
   // Select navigation links - will filter out mobile dropdown links
   const navLinks = document.querySelectorAll('nav a, #home a, #name');
   
+  console.log('initDynamicHeaderColor called, header found:', !!header, 'navLinks count:', navLinks.length);
+  
   if (!header) return;
 
-  // Sections with dark backgrounds that need white text
-  const darkSections = ['teaser', 'platform'];
-  
   let currentMode = null;
+
+  // Helper function to check if background is dark at specific coordinates
+  function isDarkBackgroundAt(x, y, sectionContext) {
+    if (!sectionContext) return false;
+    
+    const headerRect = header.getBoundingClientRect();
+    const testArea = {
+      top: headerRect.top,
+      bottom: headerRect.bottom,
+      left: x - 50, // 100px wide test area around the point
+      right: x + 50
+    };
+    
+    // Look for dark elements within this specific area
+    const potentiallyDarkElements = sectionContext.querySelectorAll('*');
+    
+    for (const element of potentiallyDarkElements) {
+      const rect = element.getBoundingClientRect();
+      
+      // Check if element intersects with this specific test area
+      if (rect.top < testArea.bottom && rect.bottom > testArea.top &&
+          rect.left < testArea.right && rect.right > testArea.left) {
+        
+        const style = window.getComputedStyle(element);
+        const bgColor = style.backgroundColor;
+        
+        // Dark detection
+        if (bgColor && (
+          bgColor.includes('rgb(0, 0, 0)') ||
+          bgColor === 'black' ||
+          element.classList.contains('solution') && 
+          element.closest('.solution-industries-cards')
+        )) {
+          return true;
+        }
+      }
+    }
+    
+    return false;
+  }
 
   function updateHeaderColor() {
     const sections = document.querySelectorAll('main section[id]');
     const headerRect = header.getBoundingClientRect();
     const headerMiddle = headerRect.top + (headerRect.height / 2);
     
-    // Find which section is under the middle of the header
-    let currentSectionId = null;
-    let maxOverlap = 0;
-    
+    // Find current section
+    let currentSection = null;
     for (const section of sections) {
       const rect = section.getBoundingClientRect();
-      
-      // Calculate overlap between section and header
       if (rect.top <= headerMiddle && rect.bottom > headerMiddle) {
-        const overlap = Math.min(rect.bottom, headerRect.bottom) - Math.max(rect.top, headerRect.top);
-        if (overlap > maxOverlap) {
-          maxOverlap = overlap;
-          currentSectionId = section.id;
-        }
+        currentSection = section;
+        break;
       }
     }
     
-    // Fallback to first section if at very top of page
-    if (!currentSectionId && window.scrollY < 100) {
-      currentSectionId = 'teaser';
+    // Define the three header areas
+    const leftArea = headerRect.left + headerRect.width * 0.15; // Logo area
+    const centerArea = headerRect.left + headerRect.width * 0.5; // Nav area  
+    const rightArea = headerRect.left + headerRect.width * 0.85; // Contact area
+    
+    let leftIsDark = false;
+    let centerIsDark = false; 
+    let rightIsDark = false;
+    
+    if (currentSection) {
+      const sectionId = currentSection.id;
+      // Check each area independently
+      leftIsDark = isDarkBackgroundAt(leftArea, headerMiddle, currentSection);
+      centerIsDark = isDarkBackgroundAt(centerArea, headerMiddle, currentSection);
+      rightIsDark = isDarkBackgroundAt(rightArea, headerMiddle, currentSection);
+      
+      // Fallback for known dark sections
+      if (sectionId === 'teaser' || sectionId === 'platform') {
+        leftIsDark = centerIsDark = rightIsDark = true;
+      }
+      
+    } else {
+      // Fallback for top of page
+      const isTopOfPage = window.scrollY < 100;
+      leftIsDark = centerIsDark = rightIsDark = isTopOfPage;
     }
     
-    // Determine if current section has dark background
-    const isDarkSection = darkSections.includes(currentSectionId);
+    // Store current state for comparison
+    const newState = { left: leftIsDark, center: centerIsDark, right: rightIsDark };
+    const stateChanged = !currentMode || 
+      currentMode.left !== leftIsDark || 
+      currentMode.center !== centerIsDark || 
+      currentMode.right !== rightIsDark;
     
-    // Only update if mode changed (prevents unnecessary repaints)
-    if (currentMode !== isDarkSection) {
-      currentMode = isDarkSection;
+    if (stateChanged) {
+      currentMode = newState;
       
-      if (isDarkSection) {
-        // Dark background → Light text (white)
+      // Update LEFT area (logo icon and text)
+      const logoIcon = document.querySelector('.logo-icon');
+      const logoText = document.querySelector('#name');
+      
+      if (leftIsDark) {
+        // Dark background → White logo and text
+        if (logoIcon) {
+          logoIcon.classList.remove('logo-dark');
+          logoIcon.classList.add('logo-white');
+        }
+        if (logoText) {
+          logoText.style.color = 'rgba(255, 255, 255, 0.95)';
+          logoText.style.textShadow = '0 1px 3px rgba(0, 0, 0, 0.5)';
+        }
+      } else {
+        // Light background → Dark logo and text
+        if (logoIcon) {
+          logoIcon.classList.remove('logo-white');
+          logoIcon.classList.add('logo-dark');
+        }
+        if (logoText) {
+          logoText.style.color = 'rgba(37, 37, 37, 0.9)';
+          logoText.style.textShadow = 'none';
+        }
+      }
+      
+      // Update CENTER area (navigation links, excluding logo text which is handled by left area)
+      if (centerIsDark) {
+        // Dark background → Light text
         navLinks.forEach(link => {
-          link.style.color = 'rgba(255, 255, 255, 0.95)';
-          link.style.textShadow = '0 1px 3px rgba(0, 0, 0, 0.5)';
+          if (link.id !== 'name') { // Skip logo text, handled by left area
+            link.style.color = 'rgba(255, 255, 255, 0.95)';
+            link.style.textShadow = '0 1px 3px rgba(0, 0, 0, 0.5)';
+          }
         });
         
-        // Apply to desktop nav links only (not when mobile menu is open)
         if (mainNav && !mainNav.classList.contains('open')) {
           const mainNavLinks = mainNav.querySelectorAll('a');
           mainNavLinks.forEach(link => {
@@ -107,32 +192,16 @@ function initDynamicHeaderColor() {
           });
         }
         
-        // Update hamburger menu icon color (for mobile)
-        document.documentElement.style.setProperty('--nav-toggle-bg', 'rgba(255, 255, 255, 0.95)');
-        
-        // Switch to white logo for dark background
-        const logoIcon = document.querySelector('.logo-icon');
-        if (logoIcon) {
-          logoIcon.classList.remove('logo-dark');
-          logoIcon.classList.add('logo-white');
-        }
-        
-        // Update contact button border color for dark background
-        const contactBtn = document.querySelector('.contact-btn');
-        if (contactBtn) {
-          contactBtn.style.borderColor = 'rgba(255, 255, 255, 0.95)';
-          contactBtn.style.color = 'rgba(255, 255, 255, 0.95)';
-        }
-        
-        header.setAttribute('data-bg-mode', 'dark');
+        document.documentElement.style.setProperty('--nav-text-shadow', '0 1px 3px rgba(0, 0, 0, 0.5)');
       } else {
         // Light background → Dark text
         navLinks.forEach(link => {
-          link.style.color = 'rgba(37, 37, 37, 0.9)';
-          link.style.textShadow = 'none';
+          if (link.id !== 'name') { // Skip logo text, handled by left area
+            link.style.color = 'rgba(37, 37, 37, 0.9)';
+            link.style.textShadow = 'none';
+          }
         });
         
-        // Apply to desktop nav links only (not when mobile menu is open)
         if (mainNav && !mainNav.classList.contains('open')) {
           const mainNavLinks = mainNav.querySelectorAll('a');
           mainNavLinks.forEach(link => {
@@ -141,25 +210,27 @@ function initDynamicHeaderColor() {
           });
         }
         
-        // Update hamburger menu icon color (for mobile)
-        document.documentElement.style.setProperty('--nav-toggle-bg', 'rgba(37, 37, 37, 0.9)');
-        
-        // Switch to dark logo for light background
-        const logoIcon = document.querySelector('.logo-icon');
-        if (logoIcon) {
-          logoIcon.classList.remove('logo-white');
-          logoIcon.classList.add('logo-dark');
-        }
-        
-        // Update contact button border color for light background
-        const contactBtn = document.querySelector('.contact-btn');
-        if (contactBtn) {
+        document.documentElement.style.setProperty('--nav-text-shadow', 'none');
+      }
+      
+      // Update RIGHT area (contact button)
+      const contactBtn = document.querySelector('.contact-btn');
+      if (contactBtn) {
+        if (rightIsDark) {
+          contactBtn.style.borderColor = 'rgba(255, 255, 255, 0.95)';
+          contactBtn.style.color = 'rgba(255, 255, 255, 0.95)';
+        } else {
           contactBtn.style.borderColor = 'rgba(37, 37, 37, 0.9)';
           contactBtn.style.color = 'rgba(37, 37, 37, 0.9)';
         }
-        
-        header.setAttribute('data-bg-mode', 'light');
       }
+      
+      // Update mobile menu toggle based on left area (where it appears)
+      document.documentElement.style.setProperty('--nav-toggle-bg', 
+        leftIsDark ? 'rgba(255, 255, 255, 0.95)' : 'rgba(37, 37, 37, 0.9)');
+      
+      // Set header data attribute based on center area (main navigation)
+      header.setAttribute('data-bg-mode', centerIsDark ? 'dark' : 'light');
     }
   }
 
@@ -169,6 +240,14 @@ function initDynamicHeaderColor() {
     if (!ticking) {
       window.requestAnimationFrame(() => {
         updateHeaderColor();
+        // Also update nav background if function exists
+        if (window.updateNavBackground) {
+          window.updateNavBackground();
+        }
+        // Update header positioning if function exists
+        if (window.updateHeaderPosition) {
+          window.updateHeaderPosition();
+        }
         ticking = false;
       });
       ticking = true;
@@ -190,6 +269,166 @@ function initDynamicHeaderColor() {
 
 // Global reference to color update function
 let updateHeaderColorGlobal = null;
+
+/**
+ * Handles nav background transition on scroll
+ * Changes from solid black to glassmorphism effect
+ */
+function initNavScrollTransition() {
+  const nav = document.querySelector('nav');
+  if (!nav) return;
+
+  function updateNavBackground() {
+    const scrollThreshold = 50; // Start transition after 50px scroll
+    const scrollY = window.scrollY;
+    
+    if (scrollY > scrollThreshold) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }
+
+  // Expose globally so it can be called by existing scroll handler
+  window.updateNavBackground = updateNavBackground;
+  
+  // Initial call
+  updateNavBackground();
+}
+
+/**
+ * Handles header positioning on scroll
+ * Gradually moves header closer to top of page as user scrolls down
+ */
+function initHeaderPositioning() {
+  const header = document.querySelector('header');
+  const nav = document.querySelector('nav');
+  if (!header || !nav) return;
+
+  function updateHeaderPosition() {
+    const scrollY = window.scrollY;
+    const maxScroll = 150; // Distance to scroll before header reaches top (px)
+    const initialMargin = 16; // Initial margin-top in px (--space-base)
+    
+    // Calculate the scroll progress (0 to 1)
+    const scrollProgress = Math.min(scrollY / maxScroll, 1);
+    const currentMargin = initialMargin * (1 - scrollProgress);
+    
+    // Device size detection
+    const isVerySmallDevice = window.innerWidth < 600;
+    const isMobile = window.innerWidth <= 800;
+    const isTablet = window.innerWidth > 800 && window.innerWidth <= 1024;
+    const isDesktop = window.innerWidth >= 1025;
+    
+    if (isDesktop) {
+      // Desktop only (1025px+): Apply scroll-based positioning
+      header.style.marginTop = `${currentMargin}px`;
+      
+      // Update nav width - transition from 1400px to 100vw
+      const initialWidth = 1400; // --nav-max-width value in px
+      const currentWidthPx = initialWidth + (window.innerWidth - initialWidth) * scrollProgress;
+      const useViewportWidth = scrollProgress > 0.8; // Switch to 100vw when close to top
+      
+      if (useViewportWidth) {
+        nav.style.width = '100vw';
+      } else {
+        nav.style.width = `${currentWidthPx}px`;
+      }
+    } else {
+      // Mobile/Tablet (<=1024px): force no margin, full width nav and remove any inline styles
+      header.style.marginTop = '0px';
+      header.style.top = '0px';
+      header.style.margin = '0px';
+      header.style.paddingTop = '0px';
+      nav.style.width = '100vw';
+      
+      // Extra aggressive reset for very small devices (< 600px)
+      if (isVerySmallDevice) {
+        header.style.transform = 'translateY(0px) !important';
+        header.style.position = 'fixed !important';
+        header.style.left = '0px !important';
+        header.style.right = '0px !important';
+        header.style.width = '100vw !important';
+        
+        // Also reset the nav element specifically
+        nav.style.marginTop = '0px !important';
+        nav.style.paddingTop = '0px !important';
+        nav.style.transform = 'translateY(0px) !important';
+        
+        console.log('Very small device detected - applying aggressive header reset');
+      } else {
+        header.style.transform = 'translateY(0px)';
+        header.style.position = 'fixed';
+      }
+    }
+  }
+
+  // Expose globally so it can be called by existing scroll handler
+  window.updateHeaderPosition = updateHeaderPosition;
+  
+  // Initial call
+  updateHeaderPosition();
+  
+  // Force mobile/tablet styling immediately (<=1024px)
+  if (window.innerWidth <= 1024) {
+    header.style.marginTop = '0px';
+    header.style.top = '0px';
+    header.style.margin = '0px';
+    header.style.paddingTop = '0px';
+    header.style.transform = 'translateY(0px)';
+    header.style.position = 'fixed';
+    nav.style.width = '100vw';
+    
+    // Extra measures for very small devices
+    if (window.innerWidth < 600) {
+      header.style.left = '0px !important';
+      header.style.right = '0px !important';
+      header.style.width = '100vw !important';
+      nav.style.marginTop = '0px !important';
+      nav.style.paddingTop = '0px !important';
+      nav.style.transform = 'translateY(0px) !important';
+      
+      console.log('Very small device detected on init:', window.innerWidth, 'px - applying aggressive fixes');
+    }
+    
+    // Debug logging for small devices
+    if (window.innerWidth <= 600) {
+      console.log('Small device detected:', window.innerWidth, 'px');
+      console.log('Header styles applied:', {
+        marginTop: header.style.marginTop,
+        top: header.style.top,
+        margin: header.style.margin,
+        position: header.style.position
+      });
+    }
+  }
+  
+  // Also update on resize to handle desktop/mobile/tablet transitions
+  window.addEventListener('resize', () => {
+    updateHeaderPosition();
+    // Additional mobile/tablet check on resize (<=1024px)
+    if (window.innerWidth <= 1024) {
+      header.style.marginTop = '0px';
+      header.style.top = '0px';
+      header.style.margin = '0px';
+      header.style.paddingTop = '0px';
+      header.style.transform = 'translateY(0px)';
+      nav.style.width = '100vw';
+      
+      // Extra measures for very small devices on resize
+      if (window.innerWidth < 600) {
+        header.style.left = '0px !important';
+        header.style.right = '0px !important';
+        header.style.width = '100vw !important';
+        nav.style.marginTop = '0px !important';
+        nav.style.paddingTop = '0px !important';
+        nav.style.transform = 'translateY(0px) !important';
+        
+        console.log('Resize: Very small device - applying aggressive fixes for', window.innerWidth, 'px');
+      }
+    }
+  });
+}
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -226,6 +465,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Dynamic header text color - adjust based on what's scrolling behind the semi-transparent header
   initDynamicHeaderColor();
+  
+  // Initialize nav background transition on scroll
+  initNavScrollTransition();
+  
+  // Initialize header positioning on scroll
+  initHeaderPositioning();
+  
+  // Additional mobile/tablet header fix - run after everything is loaded
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      if (window.innerWidth <= 1024) {
+        const header = document.querySelector('header');
+        const nav = document.querySelector('nav');
+        if (header) {
+          header.style.marginTop = '0px';
+          header.style.top = '0px';
+          header.style.margin = '0px';
+          header.style.paddingTop = '0px';
+          header.style.transform = 'translateY(0px)';
+          header.style.position = 'fixed';
+          
+          // Special treatment for very small devices
+          if (window.innerWidth < 600) {
+            header.style.left = '0px !important';
+            header.style.right = '0px !important';
+            header.style.width = '100vw !important';
+            if (nav) {
+              nav.style.marginTop = '0px !important';
+              nav.style.paddingTop = '0px !important';
+              nav.style.transform = 'translateY(0px) !important';
+            }
+            console.log('Post-load: Very small device aggressive fix for', window.innerWidth, 'px');
+          }
+          
+          console.log('Post-load mobile/tablet header fix applied for device width:', window.innerWidth);
+        }
+      }
+    }, 100);
+  });
 });
 
 // Contact Modal functionality
