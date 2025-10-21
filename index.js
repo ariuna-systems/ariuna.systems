@@ -287,6 +287,11 @@ function initNavScrollTransition() {
     } else {
       nav.classList.remove('scrolled');
     }
+
+    // Also update border radius when scroll state changes
+    if (window.updateBorderRadius) {
+      window.updateBorderRadius();
+    }
   }
 
   // Expose globally so it can be called by existing scroll handler
@@ -506,52 +511,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Contact Modal functionality
-document.addEventListener('DOMContentLoaded', () => {
-  const contactBtn = document.getElementById('contact-btn');
-  const modal = document.getElementById('contact-modal');
-  const modalClose = modal?.querySelector('.modal-close');
-  
-  if (contactBtn && modal) {
-    // Open modal when contact button is clicked
-    contactBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      modal.classList.add('show');
-      modal.setAttribute('aria-hidden', 'false');
-      // Focus management for accessibility
-      modalClose?.focus();
-      // Prevent body scrolling when modal is open
-      document.body.style.overflow = 'hidden';
-    });
-    
-    // Close modal when close button is clicked
-    modalClose?.addEventListener('click', closeModal);
-    
-    // Close modal when clicking outside the modal content
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-    
-    // Close modal with Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('show')) {
-        closeModal();
-      }
-    });
-    
-    function closeModal() {
-      modal.classList.remove('show');
-      modal.setAttribute('aria-hidden', 'true');
-      // Restore body scrolling
-      document.body.style.overflow = '';
-      // Return focus to contact button
-      contactBtn.focus();
-    }
-  }
-});
-
 // Rest of the code (copyright year, contact form, theme toggle)
 document.addEventListener("DOMContentLoaded", () => {
   let currentYear = new Date().getFullYear();
@@ -629,3 +588,104 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 });
+
+/**
+ * Updates the current date and time (Zulu/UTC) in the teaser section
+ */
+function updateDateTime() {
+  const datetimeElement = document.getElementById('current-datetime');
+  
+  if (!datetimeElement) return;
+  
+  const now = new Date();
+  
+  // Format date: DD MMM YYYY
+  const options = { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' };
+  const formattedDate = now.toLocaleDateString('en-US', options).toUpperCase();
+  
+  // Format time: HH:MM:SS Z
+  const hours = String(now.getUTCHours()).padStart(2, '0');
+  const minutes = String(now.getUTCMinutes()).padStart(2, '0');
+  const seconds = String(now.getUTCSeconds()).padStart(2, '0');
+  const formattedTime = `${hours}:${minutes}:${seconds} Z`;
+  
+  // Combine date and time in one line
+  datetimeElement.textContent = `${formattedDate} ${formattedTime}`;
+}
+
+// Initialize date/time and update every second
+updateDateTime();
+setInterval(updateDateTime, 1000);
+
+/**
+ * Rotate through sector names in the teaser subtitle
+ */
+function rotateSector() {
+  const sectors = ['Energy', 'Industry', 'Defense', 'Manufacturing', 'Supply Chain', 'Logistics'];
+  const sectorElement = document.getElementById('rotating-sector');
+  
+  if (!sectorElement) return;
+  
+  let currentIndex = 0;
+  
+  // Set initial sector
+  sectorElement.textContent = sectors[currentIndex];
+  
+  // Rotate every 3 seconds
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % sectors.length;
+    sectorElement.textContent = sectors[currentIndex];
+  }, 3000);
+}
+
+// Initialize sector rotation
+rotateSector();
+
+/**
+ * Handles header border-radius based on fullscreen state
+ * Adds rounded corners when not in fullscreen mode
+ */
+function initHeaderBorderRadius() {
+  const nav = document.querySelector('nav');
+  if (!nav) return;
+
+  function updateBorderRadius() {
+    // Check if document is in fullscreen mode
+    const isFullscreen = !!(
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.mozFullScreenElement ||
+      document.msFullscreenElement
+    );
+
+    // Check if on mobile device
+    const isMobile = window.innerWidth <= 800;
+
+    // Check if header is in scrolled state
+    const isScrolled = nav.classList.contains('scrolled');
+
+    if (isFullscreen || isMobile || isScrolled) {
+      nav.style.borderRadius = '0';
+    } else {
+      nav.style.borderRadius = '8px';
+    }
+  }
+
+  // Initial check
+  updateBorderRadius();
+
+  // Listen for fullscreen changes
+  document.addEventListener('fullscreenchange', updateBorderRadius);
+  document.addEventListener('webkitfullscreenchange', updateBorderRadius);
+  document.addEventListener('mozfullscreenchange', updateBorderRadius);
+  document.addEventListener('MSFullscreenChange', updateBorderRadius);
+
+  // Listen for window resize (for mobile detection)
+  window.addEventListener('resize', updateBorderRadius);
+
+  // Expose updateBorderRadius globally so it can be called by other functions
+  window.updateBorderRadius = updateBorderRadius;
+}
+
+// Initialize header border-radius handling
+initHeaderBorderRadius();

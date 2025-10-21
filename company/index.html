@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Arjuna Systems Company Information" />
+
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="Company - Ariuna Systems">
+    <meta property="og:description"
+        content="European startup delivering situational awareness and decision-making platform">
+    <meta property="og:image" content="../assets/hero.png">
+    <meta property="og:url" content="https://ariuna.systems/company">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Company - Ariuna Systems">
+    <meta name="twitter:description" content="European startup delivering situational awareness platform">
+    <meta name="twitter:image" content="../assets/hero.png">
+
+    <title>Company - Ariuna Systems</title>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="stylesheet" href="../index.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #ffffff;
+            color: #374151;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header for back link */
+        .company-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .company-header nav {
+            width: 100%;
+            max-width: 1400px;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 300;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+            filter: brightness(1.2);
+        }
+
+        .back-link svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover svg {
+            transform: translateX(-4px);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 2rem 0 2rem;
+        }
+
+        .page-header {
+            padding: 4rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            color: #111827;
+            letter-spacing: -0.02em;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: #6b7280;
+            font-weight: 300;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        section:last-child {
+            border-bottom: none;
+            padding-bottom: 6rem;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: #111827;
+        }
+
+        section p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: #111827;
+        }
+
+        .contact-item p {
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        .contact-item a {
+            color: #2563eb;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .contact-item a:hover {
+            color: #1d4ed8;
+        }
+
+        .legal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .legal-item {
+            padding: 1.5rem;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+
+        .legal-item strong {
+            display: block;
+            color: #111827;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .legal-item span {
+            color: #6b7280;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 0 1.5rem;
+            }
+
+            .back-link {
+                padding: 1.5rem 1.5rem 1rem 1.5rem;
+            }
+
+            .page-header {
+                padding: 3rem 0;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact-grid,
+            .legal-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .legal-item {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="company-header">
+        <nav>
+            <a href="/" class="back-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                Back to home
+            </a>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        <div class="page-header">
+            <h1>Company</h1>
+            <p>European startup delivering operational intelligence platforms</p>
+        </div>
+
+        <section id="about" aria-labelledby="about-title">
+            <h2 id="about-title">About</h2>
+            <p>
+                Arjuna Systems Group s.r.o. specializes in real-time data intelligence platforms for critical operations
+                across defense, energy, manufacturing, and financial services sectors. Our technology transforms
+                operational data into decisive action through intelligent automation and real-time insights.
+            </p>
+        </section>
+
+        <section id="contact" aria-labelledby="contact-title">
+            <h2 id="contact-title">Contact</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p><a href="mailto:office@arjuna.group">office@arjuna.group</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>Phone</h3>
+                    <p><a href="tel:+420607479148">+420 607 479 148</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>Address</h3>
+                    <p>
+                        Smolnice 20<br>
+                        439 14 Smolnice<br>
+                        Czech Republic
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="legal" aria-labelledby="legal-title">
+            <h2 id="legal-title">Legal Information</h2>
+            <div class="legal-grid">
+                <div class="legal-item">
+                    <strong>Company Name</strong>
+                    <span>Arjuna Systems Group s.r.o.</span>
+                </div>
+                <div class="legal-item">
+                    <strong>Company ID (IČ)</strong>
+                    <span>23020539</span>
+                </div>
+                <div class="legal-item">
+                    <strong>Tax ID (DIČ)</strong>
+                    <span>CZ23020539</span>
+                </div>
+                <div class="legal-item">
+                    <strong>Bank Account</strong>
+                    <span>353884200/0300</span>
+                </div>
+                <div class="legal-item">
+                    <strong>Registration</strong>
+                    <span>Regional Court in Ústí nad Labem, Section C, Insert 53653</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>
