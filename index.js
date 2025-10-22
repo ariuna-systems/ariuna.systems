@@ -248,6 +248,10 @@ function initDynamicHeaderColor() {
         if (window.updateHeaderPosition) {
           window.updateHeaderPosition();
         }
+        // Update teaser explore button visibility
+        if (window.updateTeaserExplore) {
+          window.updateTeaserExplore();
+        }
         ticking = false;
       });
       ticking = true;
@@ -435,6 +439,33 @@ function initHeaderPositioning() {
   });
 }
 
+/**
+ * Handles teaser explore button visibility on scroll
+ * Fades out when user scrolls past the teaser section
+ */
+function initTeaserExplore() {
+  const teaser = document.getElementById('teaser');
+  if (!teaser) return;
+
+  function updateTeaserExplore() {
+    const teaserRect = teaser.getBoundingClientRect();
+    const teaserBottom = teaserRect.bottom;
+    
+    // Add 'scrolled' class when teaser section scrolls out of view
+    if (teaserBottom <= 0) {
+      teaser.classList.add('scrolled');
+    } else {
+      teaser.classList.remove('scrolled');
+    }
+  }
+
+  // Expose globally so it can be called by existing scroll handler
+  window.updateTeaserExplore = updateTeaserExplore;
+  
+  // Initial call
+  updateTeaserExplore();
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize text animation
@@ -476,6 +507,9 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // Initialize header positioning on scroll
   initHeaderPositioning();
+  
+  // Initialize teaser explore button
+  initTeaserExplore();
   
   // Additional mobile/tablet header fix - run after everything is loaded
   window.addEventListener('load', () => {
@@ -603,11 +637,11 @@ function updateDateTime() {
   const options = { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' };
   const formattedDate = now.toLocaleDateString('en-US', options).toUpperCase();
   
-  // Format time: HH:MM:SS Z
+  // Format time: HH:MM:SS ZULU
   const hours = String(now.getUTCHours()).padStart(2, '0');
   const minutes = String(now.getUTCMinutes()).padStart(2, '0');
   const seconds = String(now.getUTCSeconds()).padStart(2, '0');
-  const formattedTime = `${hours}:${minutes}:${seconds} Z`;
+  const formattedTime = `${hours}:${minutes}:${seconds} ZULU`;
   
   // Combine date and time in one line
   datetimeElement.textContent = `${formattedDate} ${formattedTime}`;
@@ -667,7 +701,7 @@ function initHeaderBorderRadius() {
     if (isFullscreen || isMobile || isScrolled) {
       nav.style.borderRadius = '0';
     } else {
-      nav.style.borderRadius = '8px';
+      nav.style.borderRadius = '2px';
     }
   }
 

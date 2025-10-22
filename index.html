@@ -69,37 +69,23 @@
 
   <main id="main-content" role="main">
     <section id="teaser">
-      <!-- <video autoplay muted playsinline id="background-video">
-        <source src="assets/teaser3.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          const video = document.getElementById('background-video');
-          const videoSources = [
-            'assets/teaser3.mp4',
-            'assets/teaser5.mp4',
-            'assets/teaser4.mp4',
-          ];
-          let currentVideoIndex = 0;
 
-          video.addEventListener('ended', function () {
-            currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
-            video.src = videoSources[currentVideoIndex];
-            video.load();
-            video.play();
-          });
-        }); -->
-      </script>
+
       <div class="teaser-content">
-        <h1 class="wide-title">Real-Time Intelligence</h1> <!--<span id="rotating-sector"></span>-->
-        <p class="teaser-subtitle">
-          <span class="teaser-datetime" id="current-datetime"></span>
-        </p>
+        <h1 class="wide-title">Delivering Real-Time Intelligence</h1> <!--<span id="rotating-sector"></span>-->
       </div>
-      <p class="ukraine-support">
-        We stand with Ukraine
+      <p class="teaser-subtitle">
+        <span class="teaser-datetime" id="current-datetime"></span>
       </p>
+      <div class="teaser-explore">
+        <a href="#platform" class="explore-link">
+          <span>Explore</span>
+          <svg width="24" height="40" viewBox="0 0 24 40" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 5v25M5 30l7 10 7-10" />
+          </svg>
+        </a>
+      </div>
     </section>
 
     <section id="platform" class="scroll-anchor" aria-labelledby="platform-title">
@@ -277,29 +263,39 @@
   </main>
 
   <footer>
-    <div class="container inner">
-      <div class="footer-content">
-        <div class="footer-company-info">
-          <h4>Arjuna Systems Group s.r.o.</h4>
-          <p>
-            <strong>IČ:</strong> 23020539<br />
-            <strong>DIČ:</strong> CZ23020539<br />
-            <strong>Bank account:</strong> 353884200/0300
-          </p>
-          <p>
-            Registered at Regional Court in Ústí nad Labem,<br />
-            Section C, Insert 53653.
-          </p>
-          <p>
-            <strong>Registered address:</strong><br />
-            Smolnice 20<br />
-            439 14 Smolnice<br />
-            Czech Republic
-          </p>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-icon logo-black"></div>
+          <p class="footer-tagline">Real-time operational intelligence for critical operations</p>
         </div>
-        <div id="copyright">
-          &copy; <span id="copyright-year"></span> ARIUNA SYSTEMS
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="#platform">Platform</a>
+          <a href="#solutions">Solutions</a>
+          <a href="#research">Research</a>
+          <a href="/company/">Company</a>
         </div>
+
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p><a href="mailto:office@ariuna.group">office@ariuna.group</a></p>
+          <p><a href="tel:+420607479148">+420 607 479 148</a></p>
+          <p>Smolnice, Czech Republic</p>
+        </div>
+
+        <div class="footer-legal">
+          <h4>Legal</h4>
+          <p>Ariuna Systems Group s.r.o.</p>
+          <p>IČ: 23020539 | DIČ: CZ23020539</p>
+          <p class="footer-note">Registered at Regional Court in Ústí nad Labem</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Copyright &copy; <span id="copyright-year"></span> Ariuna Systems. All rights reserved.</p>
+        <p class="footer-ukraine">We stand with Ukraine 🇺🇦</p>
       </div>
     </div>
   </footer>
