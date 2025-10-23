@@ -17,7 +17,7 @@
   --space-3xl: 2.5rem;    /* 40px */
   --space-4xl: 3rem;      /* 48px */
   --space-5xl: 4rem;      /* 64px */
-  --space-6xl: 5rem;      /* 80px */
+  --space-6xl: 8rem;      /* 128px - Increased for bigger, consistent section spacing */
   
   /* Teaser/Hero Dynamic Colors */
   --teaser-hue: 212;
@@ -254,7 +254,7 @@ h1 {
 
 h2 {
   font-size: var(--font-size-4xl);
-  font-weight: 300;
+  font-weight: 500;
   margin-bottom: var(--space-2xl);
 }
 
@@ -564,7 +564,7 @@ nav #logo {
 section {
   width: 100%;
   padding: 0;
-  border-top: var(--border-width) solid rgba(0, 0, 0, 0.05);
+  border-top: none;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
@@ -572,7 +572,7 @@ section {
 /* Section Typography System */
 .section-heading {
   font-size: var(--font-6xl);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.2;
   margin-bottom: var(--space-4xl);
   color: var(--text-primary);
@@ -623,6 +623,11 @@ section#teaser {
     height: 100%;
     object-fit: cover;
     z-index: 1;
+    /* Performance optimizations */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform;
+    pointer-events: none;
   }
 
   .teaser-overlay {
@@ -652,7 +657,7 @@ section#teaser {
   h1 {
     color: var(--white);
     font-weight: 300;
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     text-align: center;
     padding: 0;
     line-height: 1.1;
@@ -662,6 +667,8 @@ section#teaser {
     margin: 0 auto;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     max-width: 100%;
+    transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+    will-change: transform, opacity;
   }
 
   h1 .highlight {
@@ -678,13 +685,16 @@ section#teaser {
   }
 
   .teaser-datetime {
-    /* Modern glass morphism effect */
-    background: rgba(0, 0, 0, 0.75);
+    /* Transparent background - Original colors commented below for reuse */
+    background: transparent;
+    /* Original: rgba(0, 0, 0, 0.75) */
+    
     backdrop-filter: blur(12px) saturate(180%);
     -webkit-backdrop-filter: blur(12px) saturate(180%);
     
     /* Subtle border for definition */
     border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Original border: rgba(255, 255, 255, 0.1) */
     
     /* Refined spacing */
     padding: var(--space-sm) var(--space-lg);
@@ -697,7 +707,10 @@ section#teaser {
     
     /* Enhanced text styling */
     color: rgba(255, 255, 255, 0.95);
+    /* Original text color: rgba(255, 255, 255, 0.95) */
+    
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    /* Original text shadow: 0 1px 2px rgba(0, 0, 0, 0.8) */
     
     /* Positioning and effects */
     display: inline-flex;
@@ -713,8 +726,12 @@ section#teaser {
   }
 
   .teaser-datetime:hover {
-    background: rgba(0, 0, 0, 0.85);
+    background: transparent;
+    /* Original hover background: rgba(0, 0, 0, 0.85) */
+    
     border-color: rgba(255, 255, 255, 0.2);
+    /* Original hover border: rgba(255, 255, 255, 0.2) */
+    
     transform: translateY(-1px);
   }
 
@@ -786,7 +803,7 @@ section#platform {
 
   h2 {
     font-size: 3.5rem;
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: -0.02em;
     color: var(--white);
     margin-bottom: var(--space-2xl);
@@ -839,7 +856,7 @@ section#solutions {
 
   h2 {
     font-size: 3.5rem;
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: -0.02em;
     color: var(--text-primary);
     margin-bottom: var(--space-2xl);
@@ -849,91 +866,144 @@ section#solutions {
   /* Section subheadings (Capabilities, Industries, Services) */
   h3 {
     margin-top: var(--space-6xl);
-    margin-bottom: var(--space-3xl);
-    font-size: 1.75rem;
+    margin-bottom: var(--space-4xl);
+    font-size: 1.5rem;
     font-weight: 500;
     letter-spacing: -0.01em;
-    color: var(--text-primary);
-    padding-bottom: var(--space-2xl);
-    border-bottom: 2px solid var(--gray-200);
+    color: var(--gray-900);
+    border: none;
     position: relative;
   }
 
-  /* First h3 (Capabilities) should have normal top margin */
+  /* First h3 (Capabilities) should have less top margin */
   h3:first-of-type {
-    margin-top: 0;
+    margin-top: var(--space-2xl);
   }
 
-  /* Base solution card styles */
+  /* Base solution card styles - Clean minimal cards */
   .solution-card {
-    background-color: var(--white);
-    padding: var(--space-3xl);
+    background: linear-gradient(135deg, var(--white) 0%, var(--gray-50) 100%);
+    padding: var(--space-4xl);
     border: 1px solid var(--gray-200);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    border-radius: 4px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0;
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
   }
 
   .solution-card:hover {
-    transform: translateY(-2px) scale(1.01);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    border-color: rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    border-color: var(--gray-400);
   }
 
   .solution-card h4 {
     margin-bottom: var(--space-lg);
     margin-top: 0;
-    font-size: 1.25rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: var(--text-primary);
-    position: relative;
-    z-index: 2;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.35rem;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--gray-900);
+    transition: color 0.3s ease;
   }
 
   .solution-card:hover h4 {
-    color: var(--text-primary);
-    letter-spacing: -0.02em;
+    color: var(--black);
   }
 
   .solution-card p {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     line-height: 1.7;
     color: var(--text-secondary);
     margin: 0;
-    position: relative;
-    z-index: 2;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .solution-card:hover p {
-    color: var(--text-secondary);
   }
 
   /* Base grid layout for all solution cards */
   .solution-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-4xl);
+    gap: var(--space-3xl);
     margin-top: var(--space-4xl);
+    margin-bottom: var(--space-5xl);
   }
 
-  /* Services cards - 3 column layout */
+  /* Capabilities - 2 column */
+  #solution-cards-capabilities {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Industries - 2 column */
+  #solution-cards-industries {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Services - 3 column */
   #solution-cards-services {
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-3xl);
+    gap: var(--space-2xl);
   }
 
   #solution-cards-services .solution-card {
-    background-color: var(--white);
     padding: var(--space-3xl);
-    border: 1px solid var(--gray-200);
-    border-radius: 4px;
+  }
+
+  #solution-cards-services .solution-card h4 {
+    font-size: 1.125rem;
+  }
+
+  #solution-cards-services .solution-card p {
+    font-size: 0.9rem;
+  }
+
+  /* Video card styling */
+  .solution-card-video {
     position: relative;
     overflow: hidden;
+    background: var(--black);
+  }
+
+  .card-background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+
+  .card-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+  }
+
+  .solution-card-video:hover .card-video-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .card-content {
+    position: relative;
+    z-index: 3;
+  }
+
+  .solution-card-video h4 {
+    color: var(--white);
+  }
+
+  .solution-card-video:hover h4 {
+    color: var(--white);
+  }
+
+  .solution-card-video p {
+    color: rgba(255, 255, 255, 0.9);
   }
 }
 
@@ -956,7 +1026,7 @@ section#customers {
 
   h2 {
     font-size: 3.5rem;
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: -0.02em;
     color: var(--text-primary);
     margin-bottom: var(--space-2xl);
@@ -998,8 +1068,14 @@ section#customers {
 }
 
 section#research {
-  background-color: var(--bg-primary);
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(247, 250, 252, 0.85) 100%);
+  background-size: cover, cover, cover;
+  background-position: center, center, center;
   width: 100%;
+  position: relative;
   padding-top: var(--space-6xl);
   padding-bottom: var(--space-6xl);
 
@@ -1010,7 +1086,7 @@ section#research {
 
   h2 {
     font-size: 3.5rem;
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: -0.02em;
     color: var(--text-primary);
     margin-bottom: var(--space-2xl);
@@ -1020,35 +1096,46 @@ section#research {
   .research-cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: var(--space-xl);
+    gap: var(--space-2xl);
+    margin-top: var(--space-3xl);
+    margin-bottom: var(--space-5xl);
   }
 
   .research-tile {
-    background-color: var(--gray-800);
-    background-image: linear-gradient(135deg, rgba(75, 85, 99, 0.95) 0%, rgba(55, 65, 81, 0.98) 100%);
-    padding: var(--space-2xl);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--gray-700);
+    background: linear-gradient(135deg, var(--white) 0%, var(--gray-50) 100%);
+    padding: var(--space-4xl);
+    border: 1px solid var(--gray-200);
     border-radius: 2px;
-    transition: all var(--transition-normal);
-    color: #ffffff;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
   }
 
   .research-tile:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    border-color: var(--gray-400);
   }
 
   .research-tile h3 {
-    margin-bottom: var(--space-base);
+    margin-bottom: var(--space-lg);
     margin-top: 0;
-    color: #ffffff;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--gray-900);
+    transition: color 0.3s ease;
+  }
+
+  .research-tile:hover h3 {
+    color: var(--black);
   }
 
   .research-tile p {
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.6;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 0.95rem;
+    margin: 0;
   }
 }
 
@@ -1384,14 +1471,6 @@ a {
   margin: 0 auto;
 }
 
-#solutions h2,
-#platform h2,
-#projects h2,
-#company-title {
-  margin-bottom: 3rem;
-  margin-top: 1rem;
-}
-
 /* Flexbox Utilities */
 .flex-row {
   display: flex;
@@ -1433,7 +1512,6 @@ a {
 @media (max-width: 1200px) and (min-width: 901px) {
   #solution-cards-services {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-2xl);
   }
 }
 
@@ -1441,7 +1519,7 @@ a {
   /* Medium screen responsive for solution cards */
   section#solutions .solution-cards {
     grid-template-columns: 1fr;
-    gap: var(--space-lg);
+    gap: var(--space-2xl);
   }
 
   #solution-cards-capabilities,
@@ -1451,7 +1529,6 @@ a {
 
   #solution-cards-services {
     grid-template-columns: 1fr !important;
-    gap: var(--space-2xl);
   }
 
   /* Maintain full-screen teaser on tablet/mobile */
@@ -1565,15 +1642,15 @@ a {
   /* Mobile responsive for solution cards */
   section#solutions .solution-cards {
     grid-template-columns: 1fr !important;
-    gap: var(--space-3xl);
+    gap: var(--space-2xl);
   }
 
   section#solutions .solution-card {
-    padding: var(--space-xl);
+    padding: var(--space-2xl);
   }
 
   #solution-cards-services .solution-card {
-    padding: var(--space-xl);
+    padding: var(--space-2xl);
   }
 
   .customer-cards {
@@ -2464,30 +2541,33 @@ section#teaser {
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* ===== COMPANY PAGE - RADICAL MINIMAL ===== */
+
 .company-hero-small {
   min-height: auto;
-  background: var(--white);
+  background: #ffffff !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-6xl) 0 var(--space-5xl) 0;
+  padding: var(--space-6xl) 0;
+  border-top: none;
+  position: relative;
 }
 
 .company-hero-small .container {
   text-align: left;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--space-xl);
+  padding: 0 var(--space-2xl);
 }
 
 .company-hero-small h1 {
-  font-size: clamp(3rem, 6vw, 4.5rem);
-  font-weight: 300;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 500;
   color: var(--text-primary);
   line-height: 1.2;
   letter-spacing: -0.02em;
   margin-bottom: var(--space-4xl);
-  text-transform: none;
   text-shadow: none;
 }
 
@@ -2503,7 +2583,7 @@ section#teaser {
 
 .company-hero-small .stat-item h3 {
   font-size: 2.5rem;
-  font-weight: 300;
+  font-weight: 500;
   color: var(--text-primary);
   margin-bottom: var(--space-sm);
   text-shadow: none;
@@ -2516,113 +2596,164 @@ section#teaser {
   text-shadow: none;
 }
 
-.hero-video-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  z-index: 1;
-}
-
-.hero-video-container video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  margin: 0;
-  display: block;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.company-hero .hero-content {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.company-stats {
-  padding: var(--space-4xl) 0;
-  background: var(--color-surface-subtle);
-}
-
-.company-stats .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-2xl);
-  text-align: center;
-}
-
-.stat-item h3 {
-  font-size: 2.5rem;
-  color: var(--color-primary);
-  margin-bottom: var(--space-sm);
-  text-shadow: none;
-}
-
-.stat-item p {
-  color: var(--color-text-secondary);
-  font-size: 1rem;
-  text-shadow: none;
-}
-
+/* About Section */
 .company-about {
-  padding: var(--space-5xl) 0;
-  background: #fafbfc;
+  padding: var(--space-6xl) 0;
+  background: #ffffff !important;
 }
 
 .company-about .container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--space-xl);
+  padding: 0 var(--space-2xl);
 }
 
 .about-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4xl);
-  margin-top: var(--space-4xl);
+  gap: var(--space-xl);
+  margin: 0;
 }
 
 .about-card {
-  padding: var(--space-4xl);
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
   background: var(--white);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: var(--space-3xl);
+  border: 1px solid var(--gray-300);
   transition: all 0.3s ease;
 }
 
-.about-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
+.about-card-dark {
+  background: var(--black);
+  border: 1px solid var(--black);
 }
 
 .about-card h3 {
   color: var(--text-primary);
-  margin-bottom: var(--space-xl);
-  font-size: 1.75rem;
-  font-weight: 600;
+  margin: 0 0 var(--space-lg) 0;
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.about-card-dark h3 {
+  color: var(--white);
 }
 
 .about-card p {
   color: var(--text-secondary);
-  line-height: 1.7;
-  font-size: 1.1rem;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0;
 }
 
-/* Clean styling implemented above */
+.about-card-dark p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Contact Section */
+.contact-section {
+  padding: var(--space-6xl) 0;
+  background: #ffffff !important;
+}
+
+.contact-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-2xl);
+}
+
+.contact-section h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-4xl) 0;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3xl);
+  width: 100%;
+  border-top: 1px solid var(--gray-300);
+  padding-top: var(--space-3xl);
+}
+
+.info-card {
+  padding: 0;
+  background: transparent;
+  border: none;
+  text-align: left;
+}
+
+.info-card h4 {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.info-card p {
+  color: var(--text-primary);
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.info-card a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.info-card a:hover {
+  color: var(--black);
+}
+
+/* Legal Section */
+.legal-section {
+  padding: var(--space-6xl) 0;
+  background: #ffffff !important;
+}
+
+.legal-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-2xl);
+}
+
+.legal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3xl);
+  margin: 0;
+  border-top: 1px solid var(--gray-300);
+  padding-top: var(--space-3xl);
+}
+
+.legal-card {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.legal-card strong {
+  display: block;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: var(--space-sm);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.legal-card span {
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
 
 /* Mobile Responsive Styles for Company Page */
 @media (max-width: 768px) {
@@ -2743,18 +2874,18 @@ section#teaser {
 /* Interactive Contact Section */
 .contact-section {
   padding: var(--space-6xl) 0;
-  background: #f0f4f8;
+  background: #fafbfc;
 }
 
 .contact-section .section-heading {
   color: var(--text-primary);
-  text-align: center;
+  text-align: left;
   margin-bottom: var(--space-lg);
 }
 
 .contact-section .section-intro {
   color: var(--text-secondary);
-  text-align: center;
+  text-align: left;
   margin-bottom: var(--space-5xl);
 }
 
@@ -2875,112 +3006,6 @@ section#teaser {
   left: 100%;
 }
 
-.contact-info-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-2xl);
-  width: 100%;
-}
-
-.info-card {
-  padding: var(--space-3xl);
-  background: var(--white);
-  border: 1px solid var(--gray-200);
-  border-radius: 4px;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.info-card[data-hover="scale"]:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: var(--gray-300);
-}
-
-.info-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  background: var(--gray-100);
-  border-radius: 50%;
-  margin-bottom: var(--space-lg);
-  color: var(--text-primary);
-  transition: all 0.3s ease;
-}
-
-.info-card:hover .info-icon {
-  background: var(--gray-200);
-  color: var(--text-primary);
-}
-
-.info-card h4 {
-  color: var(--text-primary);
-  font-size: var(--font-lg);
-  margin-bottom: var(--space-base);
-  font-weight: 500;
-}
-
-.info-card p {
-  color: var(--text-secondary);
-  margin-bottom: var(--space-sm);
-}
-
-.info-card a {
-  color: var(--primary);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.info-card a:hover {
-  color: var(--primary-dark);
-}
-
-.info-note {
-  display: block;
-  font-size: var(--font-sm);
-  color: var(--gray-500);
-  font-style: italic;
-}
-
-/* Legal Grid */
-.legal-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-2xl);
-  margin-top: var(--space-3xl);
-}
-
-.legal-card {
-  background: var(--surface-secondary);
-  border: 1px solid var(--border-primary);
-  border-radius: 2px;
-  padding: var(--space-xl);
-  transition: all var(--transition-normal);
-}
-
-.legal-card:hover {
-  background: var(--surface-primary);
-  border-color: var(--border-secondary);
-}
-
-.legal-card strong {
-  display: block;
-  color: var(--text-primary);
-  font-weight: 500;
-  margin-bottom: var(--space-sm);
-  font-size: var(--font-sm);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.legal-card span {
-  color: var(--text-secondary);
-  font-size: var(--font-base);
-  line-height: 1.6;
-}
-
 /* Active navigation link styling */
 .nav-link.active {
   color: var(--white) !important;
@@ -2989,6 +3014,35 @@ section#teaser {
 
 /* Mobile Responsive for Company Page */
 @media (max-width: 800px) {
+  .company-hero-small h1 {
+    font-size: 2rem;
+  }
+
+  .company-hero-small .stats-grid {
+    margin-top: var(--space-2xl);
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .contact-info-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .legal-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .company-hero-small .container,
+  .company-about .container,
+  .contact-section .container,
+  .legal-section .container {
+    padding: 0 var(--space-lg);
+  }
   .nav-content {
     padding: 0 var(--space-lg);
   }

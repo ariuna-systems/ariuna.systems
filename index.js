@@ -40,12 +40,22 @@ function initTextAnimation() {
 }
 
 /**
- * Handles teaser video removal when playback ends
+ * Handles teaser video with smooth playback optimizations
  * Fades out and removes the video element when it finishes
  */
 function initTeaserVideoHandler() {
   const video = document.getElementById('teaser-background-video');
   if (!video) return;
+
+  // Optimize video playback
+  video.playbackRate = 1.0;
+  
+  // Ensure video plays smoothly
+  video.addEventListener('loadeddata', () => {
+    video.play().catch(err => {
+      console.log('Video autoplay prevented:', err);
+    });
+  });
 
   video.addEventListener('ended', () => {
     // Fade out the video
@@ -744,5 +754,78 @@ function initHeaderBorderRadius() {
   window.updateBorderRadius = updateBorderRadius;
 }
 
+/**
+ * Initialize card video to play on hover
+ */
+function initCardVideo(videoId) {
+  const video = document.getElementById(videoId);
+  const card = video?.closest('.solution-card');
+  if (!video || !card) return;
+
+  // Set initial video state
+  video.currentTime = 0;
+  video.style.opacity = '0.3';
+
+  card.addEventListener('mouseenter', () => {
+    video.style.transition = 'opacity 0.3s ease';
+    video.style.opacity = '1';
+    video.play().catch(err => {
+      console.log('Video play prevented:', err);
+    });
+  });
+
+  card.addEventListener('mouseleave', () => {
+    video.pause();
+    video.currentTime = 0;
+    video.style.transition = 'opacity 0.3s ease';
+    video.style.opacity = '0.3';
+  });
+}
+
+/**
+ * Scroll-based teaser title scaling effect
+ * Makes the title grow bigger as you scroll down
+ */
+function initTeaserScaleEffect() {
+  const teaserTitle = document.querySelector('#teaser h1');
+  
+  if (!teaserTitle) {
+    console.log('Teaser title not found');
+    return;
+  }
+
+  console.log('Teaser scale effect initialized successfully');
+
+  function updateScale() {
+    const scrollY = window.scrollY;
+    
+    // Subtle scaling: Every 500px of scroll = 0.1 increase in scale
+    // Maximum scale is 1.3 (30% larger)
+    const scale = 1 + (scrollY / 2500);
+    
+    // Cap the maximum scale at 1.3x
+    const finalScale = Math.min(scale, 1.3);
+    
+    // Apply transform
+    teaserTitle.style.transform = `scale(${finalScale})`;
+    
+    console.log('ScrollY:', scrollY, 'Scale:', finalScale);
+  }
+
+  // Add scroll listener
+  window.addEventListener('scroll', updateScale);
+
+  // Initial call
+  updateScale();
+}
+
+// Initialize card videos
+initCardVideo('defense-video');
+initCardVideo('energy-video');
+initCardVideo('manufacturing-video');
+
 // Initialize header border-radius handling
 initHeaderBorderRadius();
+
+// Initialize teaser scale effect
+initTeaserScaleEffect();

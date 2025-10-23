@@ -22,8 +22,8 @@
 
   <title>Ariuna Systems - Delivering Real-Time Intelligence</title>
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-  <link rel="stylesheet" href="index.css?t=202510231300" />
-  <script type="module" src="index.js?t=202510231300" defer></script>
+  <link rel="stylesheet" href="index.css?t=202510231536" />
+  <script type="module" src="index.js?t=202510231536" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -72,10 +72,12 @@
 
   <main id="main-content" role="main">
     <section id="teaser">
-      <video autoplay muted playsinline class="teaser-video" id="teaser-background-video">
+      <!-- 
+      <video autoplay muted loop playsinline preload="auto" class="teaser-video" id="teaser-background-video">
         <source src="assets/teaser3.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
+      -->
       <div class="teaser-overlay"></div>
 
       <div class="teaser-content">
@@ -94,9 +96,9 @@
 
     <section id="platform" class="scroll-anchor" aria-labelledby="platform-title">
       <div class="container">
-        <h2 id="platform-title">Platform &alpha;</h2>
+        <h2 id="platform-title">Platform</h2>
         <p class="section-intro">
-          Situational awareness platform delivering intelligence across physical and digital domains.
+          Unified command center for monitoring, analyzing, and controlling cyber-physical systems in real-time.
         </p>
         <img src="assets/platform01.png" width="100%" alt="Ariuna Systems platform showcase" />
       </div>
@@ -106,8 +108,7 @@
       <div class="container">
         <h2 id="solutions-title">Solutions</h2>
         <p class="section-intro">
-          We help organizations maintain operational control in complex environments through intelligent automation and
-          real-time insights.
+          Make faster decisions in mission-critical environments with comprehensive situational awareness.
         </p>
 
         <h3>Capabilities</h3>
@@ -144,26 +145,44 @@
 
         <h3>Industries</h3>
         <div class="solution-cards" id="solution-cards-industries">
-          <div class="solution-card">
-            <h4>Defense & Government</h4>
-            <p>
-              Mission-critical intelligence fusion and threat detection for national security operations. Multi-domain
-              data streams provide enhanced situational awareness and strategic decision support.
-            </p>
+          <div class="solution-card solution-card-video">
+            <video muted playsinline preload="auto" class="card-background-video" id="defense-video">
+              <source src="assets/teaser6.mp4" type="video/mp4">
+            </video>
+            <div class="card-video-overlay"></div>
+            <div class="card-content">
+              <h4>Defense & Government</h4>
+              <p>
+                Mission-critical intelligence fusion and threat detection for national security operations. Multi-domain
+                data streams provide enhanced situational awareness and strategic decision support.
+              </p>
+            </div>
           </div>
-          <div class="solution-card">
-            <h4>Energy & Critical Infrastructure</h4>
-            <p>
-              Real-time monitoring of grid performance, renewable generation, and infrastructure security. Optimize
-              operations, predict maintenance needs, and ensure continuity across power networks.
-            </p>
+          <div class="solution-card solution-card-video">
+            <video muted playsinline preload="auto" class="card-background-video" id="energy-video">
+              <source src="assets/teaser3.mp4" type="video/mp4">
+            </video>
+            <div class="card-video-overlay"></div>
+            <div class="card-content">
+              <h4>Energy & Critical Infrastructure</h4>
+              <p>
+                Real-time monitoring of grid performance, renewable generation, and infrastructure security. Optimize
+                operations, predict maintenance needs, and ensure continuity across power networks.
+              </p>
+            </div>
           </div>
-          <div class="solution-card">
-            <h4>Manufacturing & Operations</h4>
-            <p>
-              Continuous monitoring of production, equipment health, and supply chain performance. Predictive
-              maintenance, quality optimization, and operational efficiency reduce costs and maximize output.
-            </p>
+          <div class="solution-card solution-card-video">
+            <video muted playsinline preload="auto" class="card-background-video" id="manufacturing-video">
+              <source src="assets/teaser4.mp4" type="video/mp4">
+            </video>
+            <div class="card-video-overlay"></div>
+            <div class="card-content">
+              <h4>Manufacturing & Operations</h4>
+              <p>
+                Continuous monitoring of production, equipment health, and supply chain performance. Predictive
+                maintenance, quality optimization, and operational efficiency reduce costs and maximize output.
+              </p>
+            </div>
           </div>
           <div class="solution-card">
             <h4>Financial Services</h4>
@@ -206,6 +225,7 @@
       </div>
     </section>
 
+    <!-- 
     <section id="customers" class="scroll-anchor" aria-labelledby="customers-title">
       <div class="container">
         <h2 id="customers-title">Customers</h2>
@@ -226,15 +246,15 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> 
+    -->
 
     <section id="research" class="scroll-anchor" aria-labelledby="research-title">
 
       <div class="container">
         <h2 id="research-title">Research</h2>
         <p class="section-intro">
-          As a technology startup, we develop our own solutions and infrastructure. We are a software-first company
-          with a deep commitment to integrating with real-world hardware and operational systems.
+          We build our own infrastructure—software-first, hardware-integrated.
         </p>
 
         <div class="research-cards">
@@ -274,7 +294,7 @@
         </div>
 
         <div class="footer-links">
-          <h4>Quick Links</h4>
+          <h4>Content</h4>
           <a href="#platform">Platform</a>
           <a href="#solutions">Solutions</a>
           <a href="#research">Research</a>
