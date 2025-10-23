@@ -40,6 +40,26 @@ function initTextAnimation() {
 }
 
 /**
+ * Handles teaser video removal when playback ends
+ * Fades out and removes the video element when it finishes
+ */
+function initTeaserVideoHandler() {
+  const video = document.getElementById('teaser-background-video');
+  if (!video) return;
+
+  video.addEventListener('ended', () => {
+    // Fade out the video
+    video.style.transition = 'opacity 0.5s ease';
+    video.style.opacity = '0';
+    
+    // Remove video element after fade completes
+    setTimeout(() => {
+      video.remove();
+    }, 500);
+  });
+}
+
+/**
  * Dynamically adjusts header link colors based on the background of the section
  * currently scrolling behind the semi-transparent sticky header.
  * Dark sections get white text, light sections get dark text for optimal contrast.
@@ -470,6 +490,9 @@ function initTeaserExplore() {
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize text animation
   initTextAnimation();
+  
+  // Initialize teaser video handler
+  initTeaserVideoHandler();
   
   const navToggle = document.getElementById("nav-toggle");
   const mainNav = document.getElementById("main-nav");

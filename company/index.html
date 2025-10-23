@@ -22,13 +22,18 @@
 
     <title>Company - Ariuna Systems</title>
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
-    <link rel="stylesheet" href="../index.css" />
+    <link rel="stylesheet" href="../index.css?t=202510231300" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
         rel="stylesheet" />
+    <style>
+        body {
+            background: white !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -49,40 +54,27 @@
 
     <!-- Main Content -->
     <main id="main-content" role="main">
-        <!-- Company Header -->
-        <section class="company-hero">
-            <div class="hero-video-container">
-                <video autoplay muted playsinline id="background-video">
-                    <source src="../assets/teaser3.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        const video = document.getElementById('background-video');
-                        const videoSources = [
-                            '../assets/teaser3.mp4',
-                            '../assets/teaser4.mp4',
-                            '../assets/teaser5.mp4'
-                        ];
-                        let currentVideoIndex = 0;
-
-                        video.addEventListener('ended', function () {
-                            currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
-                            video.src = videoSources[currentVideoIndex];
-                            video.load();
-                            video.play();
-                        });
-                    });
-                </script>
-            </div>
-
+        <!-- Company Hero -->
+        <section class="company-hero company-hero-small">
             <div class="container">
-                <h1>Ariuna Systems</h1>
-            </div>
+                <h1>Building real-time intelligence platforms for critical operations</h1>
 
-            <p class="teaser-subtitle">
-                <span class="teaser-datetime" id="company-current-datetime"></span>
-            </p>
+                <!-- Company Stats -->
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>2025</h3>
+                        <p>Founded</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>4</h3>
+                        <p>Key Sectors</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>100%</h3>
+                        <p>Real-time</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- About Section -->
@@ -116,31 +108,10 @@
             </div>
         </section>
 
-        <!-- Company Stats -->
-        <section class="company-stats">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <h3>2025</h3>
-                        <p>Founded</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>4</h3>
-                        <p>Key Sectors</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>100%</h3>
-                        <p>Real-time</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
         <!-- Interactive Contact Section -->
         <section id="contact" class="contact-section">
             <div class="container">
-                <h2 class="section-heading reveal-text">Let's Connect</h2>
+                <h2 class="section-heading reveal-text">Contact</h2>
                 <p class="section-intro">Ready to transform your operational intelligence? Let's start the conversation.
                 </p>
 
@@ -212,7 +183,7 @@
                                     </svg>
                                 </div>
                                 <h4>Location</h4>
-                                <p>Smolnice, Czech Republic</p>
+                                <p>Czech Republic</p>
                                 <span class="info-note">Central European HQ</span>
                             </div>
                         </div>
@@ -251,7 +222,7 @@
         </section>
     </main>
 
-    <script src="../index.js"></script>
+    <script src="../index.js?t=20251023010"></script>
     <script>
         // Animated Counter for Stats
         function animateCounters() {
@@ -327,28 +298,13 @@
             });
         }
 
-        // Update datetime
-        function updateDateTime() {
-            const datetimeElement = document.getElementById('company-current-datetime');
-            if (!datetimeElement) return;
-
-            const now = new Date();
-            const options = { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' };
-            const formattedDate = now.toLocaleDateString('en-US', options).toUpperCase();
-            const hours = String(now.getUTCHours()).padStart(2, '0');
-            const minutes = String(now.getUTCMinutes()).padStart(2, '0');
-            const seconds = String(now.getUTCSeconds()).padStart(2, '0');
-            const formattedTime = `${hours}:${minutes}:${seconds} ZULU`;
-            datetimeElement.textContent = `${formattedDate} ${formattedTime}`;
-        }
+        // Update datetime - removed since datetime element was removed
 
         // Initialize animations when page loads
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(animateCounters, 3000);
             handleScrollAnimations();
             enhanceForm();
-            updateDateTime();
-            setInterval(updateDateTime, 1000);
         });
     </script>
 </body>

@@ -20,11 +20,10 @@
   <meta name="twitter:description" content="Real-time situational awareness platform for critical operations">
   <meta name="twitter:image" content="assets/hero.png">
 
-  <title>Ariuna Systems</title>
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-  <link rel="stylesheet" href="index.css" />
-  <script type="module" src="index.js" defer></script>
-
+  <title>Ariuna Systems - Delivering Real-Time Intelligence</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="index.css?t=202510231300" />
+  <script type="module" src="index.js?t=202510231300" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -45,10 +44,14 @@
         </div>
       </div>
       <ul id="main-nav" aria-hidden="true">
-        <li><a href="#platform">Platform</a></li>
+        <li><a href="#platform">Platform &alpha;</a></li>
         <li><a href="#solutions">Solutions</a></li>
         <li><a href="#research">Research</a></li>
-        <li><a href="/company/" class="mobile-company-link">Company</a></li>
+        <li><a href="/company/" class="mobile-company-link">Company <span class="external-link-arrow"><svg width="10"
+                height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 9L9 1M9 1H3.5M9 1V6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span></a></li>
       </ul>
       <div class="header-controls">
         <button id="search-btn" aria-label="Search" class="search-btn">
@@ -69,7 +72,11 @@
 
   <main id="main-content" role="main">
     <section id="teaser">
-
+      <video autoplay muted playsinline class="teaser-video" id="teaser-background-video">
+        <source src="assets/teaser3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="teaser-overlay"></div>
 
       <div class="teaser-content">
         <h1 class="wide-title">Delivering Real-Time Intelligence</h1> <!--<span id="rotating-sector"></span>-->
@@ -80,20 +87,16 @@
       <div class="teaser-explore">
         <a href="#platform" class="explore-link">
           <span>Explore</span>
-          <svg width="24" height="40" viewBox="0 0 24 40" fill="none" stroke="currentColor" stroke-width="1.5"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 5v25M5 30l7 10 7-10" />
-          </svg>
+          <span class="explore-arrow">↓</span>
         </a>
       </div>
     </section>
 
     <section id="platform" class="scroll-anchor" aria-labelledby="platform-title">
       <div class="container">
-        <h2 id="platform-title">Platform</h2>
+        <h2 id="platform-title">Platform &alpha;</h2>
         <p class="section-intro">
-          Situational awareness platform <span class="alpha-symbol">α</span> fuses data and intelligence to transform
-          uncertainty into decisive action across physical and digital domains.
+          Situational awareness platform delivering intelligence across physical and digital domains.
         </p>
         <img src="assets/platform01.png" width="100%" alt="Ariuna Systems platform showcase" />
       </div>
@@ -124,7 +127,7 @@
             </p>
           </div>
           <div class="solution-card">
-            <h4>High-Performance Processing</h4>
+            <h4>Stream Processing</h4>
             <p>
               Process massive data volumes in real-time with enterprise-grade reliability. Scalable infrastructure
               handles millions of transactions per second, ensuring immediate response to critical events.
