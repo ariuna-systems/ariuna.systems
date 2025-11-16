@@ -264,9 +264,15 @@ function initDynamicHeaderColor() {
     }
   }
 
-  // Throttle scroll events with requestAnimationFrame for performance
+  // Optimized scroll handler with reduced calls
   let ticking = false;
+  let lastScrollTime = 0;
+  const SCROLL_THROTTLE = 16; // ~60fps
+  
   function handleScroll() {
+    const now = performance.now();
+    if (now - lastScrollTime < SCROLL_THROTTLE) return;
+    
     if (!ticking) {
       window.requestAnimationFrame(() => {
         updateHeaderColor();
@@ -282,6 +288,7 @@ function initDynamicHeaderColor() {
         if (window.updateTeaserExplore) {
           window.updateTeaserExplore();
         }
+        lastScrollTime = performance.now();
         ticking = false;
       });
       ticking = true;

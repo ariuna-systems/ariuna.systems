@@ -22,8 +22,9 @@
 
   <title>Ariuna Systems - Delivering Real-Time Intelligence</title>
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-  <link rel="stylesheet" href="index.css?t=202510231536" />
-  <script type="module" src="index.js?t=202510231536" defer></script>
+  <link rel="stylesheet" href="index.css?t=202511151730" />
+  <script type="module" src="components/header-nav.js?t=202511151730"></script>
+  <script type="module" src="index.js?t=202511151730" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -33,51 +34,13 @@
 
 <body data-theme="light">
   <a href="#main-content" class="skip-link">Skip to main content</a>
-  <header>
-    <nav aria-label="Main navigation">
-      <div class="nav-left">
-        <div id="home">
-          <a id="logo" href="" aria-label=" Arjuna Systems Home">
-            <span class="logo-icon logo-white"></span>
-          </a>
-          <a id="name" href="#">ariuna</a>
-        </div>
-      </div>
-      <ul id="main-nav" aria-hidden="true">
-        <li><a href="#platform">Platform &alpha;</a></li>
-        <li><a href="#solutions">Solutions</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="/company/" class="mobile-company-link">Company <span class="external-link-arrow"><svg width="10"
-                height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 9L9 1M9 1H3.5M9 1V6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg></span></a></li>
-      </ul>
-      <div class="header-controls">
-        <button id="search-btn" aria-label="Search" class="search-btn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search">
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.35-4.35" />
-          </svg>
-        </button>
-        <button id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </nav>
-  </header>
+  <header-nav></header-nav>
 
   <main id="main-content" role="main">
     <section id="teaser">
-      <!-- 
-      <video autoplay muted loop playsinline preload="auto" class="teaser-video" id="teaser-background-video">
-        <source src="assets/teaser3.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      -->
+      <!-- IoT sensor simulation -->
+      <!-- <img src="assets/iot-sensor.svg" class="teaser-iot-sensor" alt="IoT sensor processing"> -->
+
       <div class="teaser-overlay"></div>
 
       <div class="teaser-content">
@@ -94,167 +57,98 @@
       </div>
     </section>
 
-    <section id="platform" class="scroll-anchor" aria-labelledby="platform-title">
-      <div class="container">
-        <h2 id="platform-title">Platform</h2>
-        <p class="section-intro">
-          Unified command center for monitoring, analyzing, and controlling cyber-physical systems in real-time.
-        </p>
-        <img src="assets/platform01.png" width="100%" alt="Ariuna Systems platform showcase" />
-      </div>
-    </section>
-
     <section id="solutions" class="scroll-anchor" aria-labelledby="solutions-title">
       <div class="container">
         <h2 id="solutions-title">Solutions</h2>
         <p class="section-intro">
-          Make faster decisions in mission-critical environments with comprehensive situational awareness.
+          Make faster decisions in mission-critical environments with our software
         </p>
 
-        <h3>Capabilities</h3>
-        <div class="solution-cards" id="solution-cards-capabilities">
-          <div class="solution-card">
-            <h4>Operational Intelligence</h4>
-            <p>
-              Real-time visibility across all operations with automated threat and anomaly detection. Multi-source
-              intelligence fusion provides comprehensive operational awareness for confident decision-making.
-            </p>
-          </div>
-          <div class="solution-card">
-            <h4>Command & Control</h4>
-            <p>
-              Centralized oversight with automated response coordination. Monitor, control, and orchestrate critical
-              operations from a unified platform with complete audit trails and compliance reporting.
-            </p>
-          </div>
-          <div class="solution-card">
-            <h4>Stream Processing</h4>
-            <p>
-              Process massive data volumes in real-time with enterprise-grade reliability. Scalable infrastructure
-              handles millions of transactions per second, ensuring immediate response to critical events.
-            </p>
-          </div>
-          <div class="solution-card">
-            <h4>Advanced Analytics</h4>
-            <p>
-              Transform operational data into strategic intelligence with predictive analytics and custom dashboards.
-              Machine learning insights drive optimization and competitive advantage.
-            </p>
-          </div>
-        </div>
-
-        <h3>Industries</h3>
+        <!-- Industries -->
         <div class="solution-cards" id="solution-cards-industries">
-          <div class="solution-card solution-card-video">
-            <video muted playsinline preload="auto" class="card-background-video" id="defense-video">
-              <source src="assets/teaser6.mp4" type="video/mp4">
-            </video>
-            <div class="card-video-overlay"></div>
-            <div class="card-content">
-              <h4>Defense & Government</h4>
-              <p>
-                Mission-critical intelligence fusion and threat detection for national security operations. Multi-domain
-                data streams provide enhanced situational awareness and strategic decision support.
-              </p>
-            </div>
-          </div>
+
           <div class="solution-card solution-card-video">
             <video muted playsinline preload="auto" class="card-background-video" id="energy-video">
               <source src="assets/teaser3.mp4" type="video/mp4">
             </video>
             <div class="card-video-overlay"></div>
             <div class="card-content">
-              <h4>Energy & Critical Infrastructure</h4>
+              <h4>Energy</h4>
               <p>
-                Real-time monitoring of grid performance, renewable generation, and infrastructure security. Optimize
-                operations, predict maintenance needs, and ensure continuity across power networks.
+                Monitor energy grid performance and infrastructure in real-time
+              </p>
+              <ul>
+                <li>Fuse sensor data</li>
+                <li>Monitor energy grid operations</li>
+                <li>Optimize for savings and maintenance</li>
+                <li>Manage your energy portfolio</li>
+              </ul>
               </p>
             </div>
           </div>
+
           <div class="solution-card solution-card-video">
-            <video muted playsinline preload="auto" class="card-background-video" id="manufacturing-video">
-              <source src="assets/teaser4.mp4" type="video/mp4">
+            <video muted playsinline preload="auto" class="card-background-video" id="defense-video">
+              <source src="assets/teaser6.mp4" type="video/mp4">
             </video>
             <div class="card-video-overlay"></div>
+
             <div class="card-content">
-              <h4>Manufacturing & Operations</h4>
+              <h4>Defense</h4>
               <p>
-                Continuous monitoring of production, equipment health, and supply chain performance. Predictive
-                maintenance, quality optimization, and operational efficiency reduce costs and maximize output.
+                Intelligence fusion and threat detection for national security operations.
               </p>
             </div>
           </div>
-          <div class="solution-card">
-            <h4>Financial Services</h4>
-            <p>
-              Real-time risk monitoring, fraud detection, and regulatory compliance across trading and operations.
-              Advanced analytics ensure market advantage while maintaining security and compliance.
-            </p>
-          </div>
         </div>
-
-        <h3>Services</h3>
-        <div class="solution-cards" id="solution-cards-services">
-          <div class="solution-card">
-            <h4>Python Analytics Training</h4>
-            <p>
-              Equip your team with advanced Python skills for custom analytics and predictive modeling. Our hands-on
-              workshops focus on production-ready code, best practices, and maintainable solutions that scale with
-              your organization's needs.
-            </p>
-          </div>
-          <div class="solution-card">
-            <h4>Platform Integration Services</h4>
-            <p>
-              Seamlessly integrate custom Python modules and analytical workflows into our platform. We provide
-              end-to-end implementation support, ensuring your team maximizes operational value and achieves
-              production-ready deployments.
-            </p>
-          </div>
-          <div class="solution-card">
-            <h4>Domain Expertise & Advisory</h4>
-            <p>
-              Access specialized knowledge from our experts in energy, defense, and critical infrastructure sectors.
-              We provide strategic guidance on operational intelligence, threat detection, and situational awareness
-              tailored to your industry.
-            </p>
-          </div>
-        </div>
-
-
       </div>
     </section>
 
-    <!-- 
-    <section id="customers" class="scroll-anchor" aria-labelledby="customers-title">
+    <section id="platform" class="scroll-anchor" aria-labelledby="platform-title">
       <div class="container">
-        <h2 id="customers-title">Customers</h2>
+        <h2 id="platform-title">Platform</h2>
         <p class="section-intro">
-          We partner with forward-thinking organizations across critical industries to deliver operational excellence
-          and tactical intelligence solutions.
+          Unified platform for controlling cyber-physical systems in real-time
         </p>
 
-        <div class="customer-cards">
-          <div class="customer">
-            <h4><a href="https://www.kasi.cz/">KASI Foundry a.s</a></h4>
+
+        <div class="platform-cards" id="platform-cards-capabilities">
+          <div class="platform-card">
+            <h4>Operational Intelligence</h4>
+            <p>
+              Real-time visibility with automated threat detection across all operations.
+            </p>
           </div>
-          <div class="customer">
-            <h4><a href="https://www.issk.sk/">IS - Industry Solutions, a.s.</a></h4>
+          <div class="platform-card">
+            <h4>Command & Control</h4>
+            <p>
+              Monitor and orchestrate critical operations from a unified platform.
+            </p>
           </div>
-          <div class="customer">
-            <h4><a href="https://www.hospitalanalytics.cz/">Advance Hospital Analytics, s.r.o.</a></h4>
+          <div class="platform-card">
+            <h4>Stream Processing</h4>
+            <p>
+              Process millions of events per second with immediate response to critical situations.
+            </p>
+          </div>
+          <div class="platform-card">
+            <h4>Advanced Analytics</h4>
+            <p>
+              Predictive analytics and custom dashboards for better decision-making.
+            </p>
           </div>
         </div>
+        <img src="assets/platform01.png" width="100%" alt="Ariuna Systems platform showcase" />
       </div>
-    </section> 
-    -->
+    </section>
+
 
     <section id="research" class="scroll-anchor" aria-labelledby="research-title">
 
       <div class="container">
         <h2 id="research-title">Research</h2>
         <p class="section-intro">
-          We build our own infrastructure—software-first, hardware-integrated.
+          We build our own infrastructure—software-first, hardware-integrated
         </p>
 
         <div class="research-cards">
@@ -280,6 +174,11 @@
             </p>
           </div>
         </div>
+
+        <p class="section-intro">
+          We apply cutting-edge methods to meet our customers' needs
+        </p>
+
       </div>
     </section>
 
@@ -310,15 +209,15 @@
 
         <div class="footer-legal">
           <h4>Legal</h4>
-          <p>Ariuna Systems Group s.r.o.</p>
+          <p>Arjuna Systems Group s.r.o.</p>
           <p>IČ: 23020539 | DIČ: CZ23020539</p>
           <p class="footer-note">Registered at Regional Court in Ústí nad Labem</p>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>Copyright &copy; <span id="copyright-year"></span> Ariuna Systems. All rights reserved.</p>
-        <p class="footer-ukraine">We stand with Ukraine 🇺🇦</p>
+        <p>&copy; <span id="copyright-year"></span> Ariuna Systems. All rights reserved.</p>
+        <p class="footer-ukraine">We stand with Ukraine</p>
       </div>
     </div>
   </footer>
